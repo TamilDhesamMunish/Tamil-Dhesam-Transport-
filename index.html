@@ -9,147 +9,437 @@
 <link rel="icon" href="icons/icon-192.png">
 <title>Tamil Dhesam Transport</title>
 <style>
-:root{--navy:#10243a;--blue:#1769aa;--gold:#f5b942;--bg:#f3f6fa;--ink:#172536;--muted:#667789;--line:#e2e8ef;--green:#16834b;--red:#c53b3b}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans Tamil",sans-serif}
-header{background:linear-gradient(135deg,#10243a,#174b70);color:#fff;padding:22px 18px 18px;border-radius:0 0 22px 22px}
-.brand{display:flex;align-items:center;gap:12px}.logo{width:48px;height:48px;border-radius:14px;background:var(--gold);display:grid;place-items:center;color:var(--navy);font-size:25px;font-weight:900}
-h1{font-size:18px;margin:0}header p{margin:4px 0 0;color:#d6e5f1;font-size:12px}
+:root{
+  --navy:#10243a;
+  --blue:#1769aa;
+  --gold:#f5b942;
+  --bg:#f3f6fa;
+  --ink:#172536;
+  --muted:#667789;
+  --line:#e2e8ef;
+  --green:#16834b;
+  --red:#c53b3b;
+  --orange:#d97706;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans Tamil",sans-serif}
+
+header{background:linear-gradient(135deg,#10243a,#174b70);color:#fff;padding:20px 18px;border-radius:0 0 22px 22px;box-shadow:0 4px 12px rgba(16,36,58,0.15)}
+.header-top{display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:46px;height:46px;border-radius:14px;background:var(--gold);display:grid;place-items:center;color:var(--navy);font-size:24px;font-weight:900;flex-shrink:0}
+h1{font-size:18px;margin:0;letter-spacing:0.3px}
+header p{margin:3px 0 0;color:#d6e5f1;font-size:12px}
+.export-btn{background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);padding:8px 12px;border-radius:10px;font-size:12px;font-weight:600;cursor:pointer}
+
 main{max-width:760px;margin:auto;padding:14px 14px 90px}
-.tabs{display:flex;gap:7px;overflow:auto;margin:14px 0;padding-bottom:4px}
-.tab{border:1px solid var(--line);background:#fff;color:var(--muted);border-radius:999px;padding:9px 14px;white-space:nowrap;font-weight:650}
-.tab.active{background:var(--navy);color:white;border-color:var(--navy)}
-.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;box-shadow:0 3px 12px #10243a08}
-.metric-label{font-size:12px;color:var(--muted)}.metric{font-size:21px;font-weight:800;margin-top:5px;overflow-wrap:anywhere}
-.green{color:var(--green)}.red{color:var(--red)}
-.section-title{font-size:16px;font-weight:800;margin:20px 2px 10px}
-.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}
-button,.btn{border:0;border-radius:12px;padding:11px 14px;background:var(--blue);color:#fff;font-weight:750;font-size:14px;cursor:pointer}
-button.secondary{background:#eaf1f7;color:var(--navy)}button.danger{background:#fff0f0;color:var(--red)}
-.panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:15px;margin-bottom:12px}
-label{display:block;font-size:12px;color:var(--muted);font-weight:700;margin:10px 0 5px}
-input,select,textarea{width:100%;border:1px solid #d7e0e9;border-radius:10px;padding:11px;font:inherit;background:#fff;color:var(--ink)}
-.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.full{grid-column:1/-1}
-.trip{background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px;margin:9px 0}
-.triptop{display:flex;justify-content:space-between;gap:10px;align-items:start}
-.route{font-weight:800}.sub{font-size:12px;color:var(--muted);margin-top:4px}
-.pill{font-size:11px;background:#e8f6ee;color:var(--green);padding:5px 8px;border-radius:999px;white-space:nowrap}
-.pill.pending{background:#fff4df;color:#946000}
-.tripstats{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:12px;color:var(--muted)}
-.empty{text-align:center;color:var(--muted);padding:30px 12px}
-.note{font-size:12px;color:var(--muted);line-height:1.5}
-.hidden{display:none!important}
-footer{position:fixed;bottom:0;left:0;right:0;background:#ffffffed;border-top:1px solid var(--line);padding:10px 14px calc(10px + env(safe-area-inset-bottom));text-align:center;font-size:11px;color:var(--muted)}
-@media(min-width:600px){.cards{grid-template-columns:repeat(4,minmax(0,1fr))}.metric{font-size:19px}}
+
+/* Dashboard Summary Cards */
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:14px}
+@media(min-width:600px){.stats{grid-template-columns:repeat(4,1fr)}}
+.stat-card{background:#fff;padding:12px 14px;border-radius:14px;border:1px solid var(--line);box-shadow:0 2px 5px rgba(0,0,0,0.02)}
+.stat-card span{display:block;font-size:11px;color:var(--muted);font-weight:600}
+.stat-card strong{display:block;font-size:16px;margin-top:4px;color:var(--navy)}
+.stat-card.green strong{color:var(--green)}
+.stat-card.red strong{color:var(--red)}
+.stat-card.blue strong{color:var(--blue)}
+
+/* Tabs */
+.tabs{display:flex;gap:7px;overflow:auto;margin:12px 0;padding-bottom:4px}
+.tab{border:1px solid var(--line);background:#fff;color:var(--muted);border-radius:999px;padding:9px 15px;white-space:nowrap;font-size:13px;font-weight:600;cursor:pointer;transition:0.2s}
+.tab.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+/* Cards & Forms */
+.card{background:#fff;border-radius:16px;padding:16px;border:1px solid var(--line);margin-bottom:14px;box-shadow:0 2px 8px rgba(0,0,0,0.03)}
+.card h2{font-size:15px;margin:0 0 14px;color:var(--navy);display:flex;justify-content:space-between;align-items:center}
+
+.section-label{font-size:12px;font-weight:800;color:var(--blue);text-transform:uppercase;margin:14px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.field{margin-bottom:10px}
+.field label{display:block;font-size:11.5px;font-weight:600;color:var(--muted);margin-bottom:4px}
+.field input,.field select{width:100%;padding:10px 11px;border:1px solid var(--line);border-radius:10px;font-size:14px;color:var(--ink);background:#fff;font-family:inherit}
+.field input:focus,.field select:focus{outline:none;border-color:var(--blue)}
+.auto-box{background:#f0f4f8 !important;font-weight:700;color:var(--navy) !important}
+.profit-box{background:#dcfce7 !important;font-weight:800;color:var(--green) !important;border-color:#86efac !important}
+
+.btn-row{display:flex;gap:10px;margin-top:16px}
+.btn{flex:1;padding:12px;border:none;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit}
+.btn-primary{background:var(--navy);color:#fff}
+.btn-gold{background:var(--gold);color:var(--navy)}
+.btn-light{background:#e2e8ef;color:var(--ink);flex:0.4}
+
+/* Trip List Cards */
+.search-bar{width:100%;padding:11px 14px;border:1px solid var(--line);border-radius:12px;font-size:14px;margin-bottom:12px;background:#fff}
+.trip-item{background:#fff;border:1px solid var(--line);border-radius:15px;padding:14px;margin-bottom:12px;position:relative}
+.trip-top{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px dashed var(--line);padding-bottom:9px;margin-bottom:9px}
+.trip-title{font-weight:800;font-size:15px;color:var(--navy)}
+.trip-sub{font-size:12px;color:var(--muted);margin-top:2px}
+.badge{padding:4px 9px;border-radius:999px;font-size:11px;font-weight:700}
+.b-delivered{background:#dcfce7;color:var(--green)}
+.b-transit{background:#fef3c7;color:var(--orange)}
+.b-pending{background:#fee2e2;color:var(--red)}
+
+.trip-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;background:var(--bg);padding:9px;border-radius:10px;font-size:12px;margin-bottom:8px}
+.trip-metrics div span{display:block;color:var(--muted);font-size:10px}
+.trip-metrics div strong{color:var(--ink);font-size:13px}
+
+.expense-strip{display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);background:#fffbeb;padding:6px 10px;border-radius:8px;margin-bottom:8px;border:1px solid #fef3c7}
+
+.money-bar{display:flex;justify-content:space-between;font-size:13px;padding:7px 2px;border-top:1px solid var(--line)}
+.trip-actions{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px}
+.act-btn{padding:8px 4px;border-radius:8px;border:none;font-size:11.5px;font-weight:700;cursor:pointer;text-align:center;text-decoration:none}
+.act-call{background:#dcfce7;color:var(--green)}
+.act-bill{background:#fef3c7;color:#b45309}
+.act-edit{background:#e0f2fe;color:var(--blue)}
+.act-del{background:#fee2e2;color:var(--red)}
+
+/* Receipt Modal */
+.modal{position:fixed;inset:0;background:rgba(16,36,58,0.65);display:grid;place-items:center;padding:16px;z-index:100}
+.modal-content{background:#fff;width:100%;max-width:420px;border-radius:18px;padding:20px;box-shadow:0 10px 25px rgba(0,0,0,0.2)}
+.receipt-box{border:2px dashed var(--navy);padding:16px;border-radius:12px;background:#fafcff}
+.receipt-header{text-align:center;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:12px}
+.receipt-header h3{margin:0;color:var(--navy);font-size:17px}
+.receipt-header p{margin:2px 0 0;font-size:11px;color:var(--muted)}
+.r-row{display:flex;justify-content:space-between;font-size:13px;margin-bottom:7px}
+.r-total{border-top:1px solid var(--ink);padding-top:8px;margin-top:8px;font-weight:800;font-size:15px}
+
+.hidden{display:none !important}
+
+@media print {
+  body * { visibility: hidden; }
+  #receiptModal, #receiptModal * { visibility: visible; }
+  #receiptModal { position: absolute; left: 0; top: 0; background: #fff; }
+  .no-print { display: none !important; }
+}
 </style>
 </head>
 <body>
+
 <header>
- <div class="brand"><div class="logo">TD</div><div><h1>தமிழ் தேசம் டிரான்ஸ்போர்ட்</h1><p>TAMIL DHESAM TRANSPORT · MY TRIP MANAGER</p></div></div>
+  <div class="header-top">
+    <div class="brand">
+      <div class="logo">TD</div>
+      <div>
+        <h1>Tamil Dhesam Transport</h1>
+        <p>Trip, Expense, Profit & Receipt Manager</p>
+      </div>
+    </div>
+    <button class="export-btn" onclick="exportCSV()">📥 Excel</button>
+  </div>
 </header>
+
 <main>
- <nav class="tabs">
-  <button class="tab active" data-tab="home">Dashboard</button>
-  <button class="tab" data-tab="trips">Trip Entries</button>
-  <button class="tab" data-tab="add">+ New Trip</button>
-  <button class="tab" data-tab="backup">Backup</button>
- </nav>
- <section id="home">
-  <div class="cards">
-   <div class="card"><div class="metric-label">மொத்த வருமானம்</div><div class="metric" id="income">₹0</div></div>
-   <div class="card"><div class="metric-label">மொத்த KM</div><div class="metric" id="kms">0</div></div>
-   <div class="card"><div class="metric-label">சராசரி Rent / KM</div><div class="metric" id="avg">₹0</div></div>
-   <div class="card"><div class="metric-label">மொத்த செலவு</div><div class="metric red" id="expenses">₹0</div></div>
-   <div class="card"><div class="metric-label">நிகர லாபம் (Rent − செலவு)</div><div class="metric green" id="profit">₹0</div></div>
-   <div class="card"><div class="metric-label">வசூலித்த தொகை</div><div class="metric" id="received">₹0</div></div>
-   <div class="card"><div class="metric-label">நிலுவைப் பணம்</div><div class="metric red" id="pending">₹0</div></div>
-   <div class="card"><div class="metric-label">மொத்த Trips</div><div class="metric" id="count">0</div></div>
+  <!-- Summary Stats -->
+  <div class="stats">
+    <div class="stat-card">
+      <span>மொத்த Trips / KM</span>
+      <strong id="statTripsKm">0 | 0 km</strong>
+    </div>
+    <div class="stat-card green">
+      <span>வரவு (Received)</span>
+      <strong id="statReceived">₹0</strong>
+    </div>
+    <div class="stat-card red">
+      <span>பாக்கி (Pending)</span>
+      <strong id="statPending">₹0</strong>
+    </div>
+    <div class="stat-card blue">
+      <span>நிகர லாபம் (Net Profit)</span>
+      <strong id="statProfit">₹0</strong>
+    </div>
   </div>
-  <div class="section-title">சமீபத்திய Trips</div><div id="recent"></div>
- </section>
- <section id="trips" class="hidden">
-  <div class="section-title">அனைத்து Trip Entries</div><div id="allTrips"></div>
- </section>
- <section id="add" class="hidden">
-  <div class="section-title">புதிய Trip பதிவு</div>
-  <form id="tripForm" class="panel">
-   <div class="formgrid">
-    <div><label>Trip Date</label><input name="date" type="date" required></div>
-    <div><label>Customer / Party</label><input name="customer" placeholder="Customer name"></div>
-   <div><label>Customer Mobile Number</label>
-<input name="customerPhone" type="tel" placeholder="Mobile number"></div>
-    <div><label>Loading Place *</label><input name="from" placeholder="Chennai" required></div>
-    <div><label>Unloading Place *</label><input name="to" placeholder="Pune" required></div>
-    <div><label>Starting KM *</label><input name="startKm" type="number" min="0" step="0.1" required></div>
-    <div><label>Ending KM *</label><input name="endKm" type="number" min="0" step="0.1" required></div>
-    <div><label>Total Rent (₹) *</label><input name="rent" type="number" min="0" required></div>
-    <div><label>Amount Received (₹)</label><input name="received" type="number" min="0" value="0"></div>
-    <div><label>Diesel (₹)</label><input name="diesel" type="number" min="0" value="0"></div>
-     <div>
-<label>Diesel Filled (Litres)</label>
-<input name="litres" type="number" min="0" step="0.01" value="0">
-</div>
-    <div><label>Toll (₹)</label><input name="toll" type="number" min="0" value="0"></div>
-    <div><label>Food (₹)</label><input name="food" type="number" min="0" value="0"></div>
-    <div><label>Permit / RTO (₹)</label><input name="permit" type="number" min="0" value="0"></div>
-    <div><label>Loading / Unloading (₹)</label><input name="loading" type="number" min="0" value="0"></div>
-    <div><label>Other Expenses (₹)</label><input name="other" type="number" min="0" value="0"></div>
-    <div class="full"><label>Notes</label><textarea name="notes" rows="2" placeholder="Additional details"></textarea></div>
-   </div>
-   <p class="note">KM = Ending KM − Starting KM. Pending = Rent − Amount Received. Expenses எல்லாம் சேர்த்து தானாகக் கணக்கிடப்படும்.</p>
-   <button type="submit" style="width:100%;margin-top:8px">Save Trip</button>
-  </form>
- </section>
- <section id="backup" class="hidden">
-  <div class="section-title">Data Backup & Restore</div>
-  <div class="panel">
-   <p><b>உங்கள் கணக்குத் தகவல்களை பாதுகாப்பாக வைத்துக்கொள்ளுங்கள்.</b></p>
-   <p class="note">இந்த ஆரம்ப பதிப்பில் தகவல்கள் இந்த மொபைல் Browser-ல் மட்டும் சேமிக்கப்படும். Browser data clear செய்தால் பதிவுகள் அழியலாம். அடிக்கடி Backup எடுக்கவும்.</p>
-   <div class="actions"><button id="export">Download Backup</button><button class="secondary" id="csv">Export CSV</button></div>
-   <label>Backup JSON file-ஐ Restore செய்ய</label><input id="restoreFile" type="file" accept=".json,application/json">
-   <p class="note">Restore செய்தால் தற்போதைய பதிவுகள் Backup பதிவுகளால் மாற்றப்படும்.</p>
-   <button class="danger" id="clear">அனைத்து பதிவுகளையும் அழிக்க</button>
+
+  <!-- Navigation Tabs -->
+  <div class="tabs">
+    <button class="tab active" id="tabEntryBtn" onclick="switchTab('entry')">➕ Trip Entry</button>
+    <button class="tab" id="tabListBtn" onclick="switchTab('list')">📋 All Trips (<span id="tripCount">0</span>)</button>
+    <button class="tab" id="tabPendingBtn" onclick="switchTab('pending')">⏳ Pending (<span id="pendingCount">0</span>)</button>
   </div>
- </section>
+
+  <!-- TAB 1: TRIP ENTRY / EDIT FORM -->
+  <div id="entrySection" class="card">
+    <h2>
+      <span id="formHeading">புதிய Trip பதிவு (New Trip)</span>
+      <span id="editBadge" class="badge b-transit hidden">Editing Mode</span>
+    </h2>
+
+    <form id="tripForm">
+      <input type="hidden" id="editIndex" value="-1">
+
+      <div class="grid-2">
+        <div class="field">
+          <label>தேதி (Date) *</label>
+          <input type="date" id="tripDate" required>
+        </div>
+        <div class="field">
+          <label>Transport / வண்டி பெயர் *</label>
+          <input type="text" id="transportName" placeholder="Ex: Tamil Dhesam / TN01AB1234" required>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="field">
+          <label>Customer பெயர் *</label>
+          <input type="text" id="customerName" placeholder="Customer Name" required>
+        </div>
+        <div class="field">
+          <label>Customer போன் நம்பர் *</label>
+          <input type="tel" id="customerPhone" placeholder="9876543210" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>இடம் (From - To Route) *</label>
+        <input type="text" id="route" placeholder="Ex: Chennai to Madurai" required>
+      </div>
+
+      <!-- KM Calculation -->
+      <div class="section-label">1. கிலோமீட்டர் & மைலேஜ் (KM & Mileage)</div>
+      <div class="grid-3">
+        <div class="field">
+          <label>Start KM *</label>
+          <input type="number" id="startKm" step="0.1" placeholder="0" oninput="calcValues()" required>
+        </div>
+        <div class="field">
+          <label>End KM *</label>
+          <input type="number" id="endKm" step="0.1" placeholder="0" oninput="calcValues()" required>
+        </div>
+        <div class="field">
+          <label>Total KM</label>
+          <input type="text" id="totalKm" class="auto-box" readonly value="0">
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="field">
+          <label>Diesel (Liters) *</label>
+          <input type="number" id="dieselLiters" step="0.01" placeholder="0" oninput="calcValues()" required>
+        </div>
+        <div class="field">
+          <label>1L விலை (₹)</label>
+          <input type="number" id="dieselRate" step="0.01" value="94" oninput="calcValues()">
+        </div>
+        <div class="field">
+          <label>Mileage (KM/L)</label>
+          <input type="text" id="mileage" class="auto-box" readonly value="0.00">
+        </div>
+      </div>
+
+      <!-- Expenses Section -->
+      <div class="section-label">2. வழிச் செலவுகள் (Trip Expenses)</div>
+      <div class="grid-3">
+        <div class="field">
+          <label>டீசல் செலவு (Auto ₹)</label>
+          <input type="number" id="dieselCost" class="auto-box" readonly value="0">
+        </div>
+        <div class="field">
+          <label>Driver பேட்டா (₹)</label>
+          <input type="number" id="driverBatta" placeholder="0" oninput="calcValues()">
+        </div>
+        <div class="field">
+          <label>Toll / இதர செலவு (₹)</label>
+          <input type="number" id="tollExpense" placeholder="0" oninput="calcValues()">
+        </div>
+      </div>
+
+      <!-- Payment & Profit Calculation -->
+      <div class="section-label">3. வாடகை & லாபம் (Payment & Profit)</div>
+      <div class="grid-3">
+        <div class="field">
+          <label>மொத்த வாடகை (Total ₹) *</label>
+          <input type="number" id="totalAmount" placeholder="0" oninput="calcValues()" required>
+        </div>
+        <div class="field">
+          <label>வந்த பணம் (Received ₹) *</label>
+          <input type="number" id="receivedAmount" placeholder="0" oninput="calcValues()" required>
+        </div>
+        <div class="field">
+          <label>பாக்கி (Pending ₹)</label>
+          <input type="number" id="pendingBalance" class="auto-box" readonly value="0">
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="field">
+          <label>நிகர லாபம் (Net Profit ₹ Auto)</label>
+          <input type="number" id="netProfit" class="profit-box" readonly value="0">
+        </div>
+        <div class="field">
+          <label>Courier / Delivery Status</label>
+          <select id="courierStatus">
+            <option value="In Transit">🚚 In Transit (வழியில் உள்ளது)</option>
+            <option value="Delivered">✅ Delivered (டெலிவரி முடிந்தது)</option>
+            <option value="Pending">⏳ Pending (நிலுவையில் உள்ளது)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button type="submit" class="btn btn-primary" id="submitBtn">💾 Save Trip</button>
+        <button type="button" class="btn btn-light" onclick="resetForm()">Clear</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- TAB 2 & 3: TRIP LIST / PENDING LIST -->
+  <div id="listSection" class="hidden">
+    <input type="text" id="searchBox" class="search-bar" placeholder="🔍 Search Transport, Customer, Phone, Route..." oninput="renderTrips()">
+    <div id="tripsContainer"></div>
+  </div>
 </main>
-<footer>தமிழ் தேசம் டிரான்ஸ்போர்ட் · உங்கள் பயணக் கணக்கு உங்கள் கையில்</footer>
+
+<!-- RECEIPT / BILL MODAL -->
+<div id="receiptModal" class="modal hidden">
+  <div class="modal-content">
+    <div class="receipt-box" id="receiptContent">
+      <div class="receipt-header">
+        <h3>TAMIL DHESAM TRANSPORT</h3>
+        <p>Trip Invoice & Delivery Receipt</p>
+      </div>
+      <div id="receiptDetails"></div>
+    </div>
+    <div class="btn-row no-print" style="margin-top:14px">
+      <button class="btn btn-primary" onclick="window.print()">🖨️ Print / PDF</button>
+      <button class="btn btn-gold" id="waShareBtn">📲 WhatsApp</button>
+      <button class="btn btn-light" onclick="closeReceipt()">Close</button>
+    </div>
+  </div>
+</div>
+
 <script>
-const KEY='tdt_trips_v1'; let trips=JSON.parse(localStorage.getItem(KEY)||'[]');
-const money=n=>'₹'+Number(n||0).toLocaleString('en-IN',{maximumFractionDigits:2});
-const num=(v)=>Number(v||0);
-const km=t=>Math.max(0,num(t.endKm)-num(t.startKm));
-const exp=t=>['diesel','toll','food','permit','loading','other'].reduce((s,k)=>s+num(t[k]),0);
-const pending=t=>Math.max(0,num(t.rent)-num(t.received));
-function save(){localStorage.setItem(KEY,JSON.stringify(trips));render()}
-function render(){
- const totalRent=trips.reduce((s,t)=>s+num(t.rent),0), totalKm=trips.reduce((s,t)=>s+km(t),0);
- const totalExp=trips.reduce((s,t)=>s+exp(t),0), totalReceived=trips.reduce((s,t)=>s+num(t.received),0);
- document.getElementById('income').textContent=money(totalRent);
- document.getElementById('kms').textContent=totalKm.toLocaleString('en-IN');
- document.getElementById('avg').textContent=money(totalKm?totalRent/totalKm:0);
- document.getElementById('expenses').textContent=money(totalExp);
- document.getElementById('profit').textContent=money(totalRent-totalExp);
- document.getElementById('received').textContent=money(totalReceived);
- document.getElementById('pending').textContent=money(trips.reduce((s,t)=>s+pending(t),0));
- document.getElementById('count').textContent=trips.length;
- const sorted=[...trips].sort((a,b)=>(b.date||'').localeCompare(a.date||''));
- document.getElementById('recent').innerHTML=sorted.slice(0,3).map(tripCard).join('')||'<div class="empty">இன்னும் Trip பதிவு செய்யவில்லை.<br>+ New Trip மூலம் முதல் Trip-ஐ பதிவு செய்யுங்கள்.</div>';
- document.getElementById('allTrips').innerHTML=sorted.map(tripCard).join('')||'<div class="empty">Trip Entries எதுவும் இல்லை.</div>';
+let trips = JSON.parse(localStorage.getItem('td_transport_trips_v2')) || [];
+let currentFilter = 'all';
+
+document.getElementById('tripDate').valueAsDate = new Date();
+
+function switchTab(tab) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  if (tab === 'entry') {
+    document.getElementById('tabEntryBtn').classList.add('active');
+    document.getElementById('entrySection').classList.remove('hidden');
+    document.getElementById('listSection').classList.add('hidden');
+  } else {
+    currentFilter = (tab === 'pending') ? 'pending' : 'all';
+    document.getElementById(tab === 'pending' ? 'tabPendingBtn' : 'tabListBtn').classList.add('active');
+    document.getElementById('entrySection').classList.add('hidden');
+    document.getElementById('listSection').classList.remove('hidden');
+    renderTrips();
+  }
 }
-function tripCard(t){return `<div class="trip"><div class="triptop"><div><div class="route">${esc(t.from)} → ${esc(t.to)}</div><div class="sub">${esc(t.date||'')} · ${esc(t.customer||'No customer')}</div></div><span class="pill ${pending(t)>0?'pending':''}">${pending(t)>0?'Pending '+money(pending(t)):'Paid'}</span></div><div class="tripstats"><span>${km(t).toLocaleString('en-IN')} KM</span><span>Rent ${money(t.rent)}</span><span>Expense ${money(exp(t))}</span><span>Profit ${money(num(t.rent)-exp(t))}</span></div><div class="actions"><button class="secondary" onclick="addPayment('${t.id}')">Add Payment</button><button class="danger" onclick="deleteTrip('${t.id}')">Delete</button></div></div>`}
-function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-window.addPayment=id=>{const t=trips.find(x=>x.id===id);if(!t)return;const v=prompt('இப்போது எவ்வளவு payment வந்தது? (₹)');if(v===null)return;const a=num(v);if(a<=0)return alert('சரியான தொகையை உள்ளிடவும்');t.received=num(t.received)+a;if(t.received>num(t.rent))alert('குறிப்பு: வசூல் தொகை Rent-ஐ விட அதிகமாக உள்ளது.');save()}
-window.deleteTrip=id=>{if(confirm('இந்த Trip பதிவை அழிக்க வேண்டுமா?')){trips=trips.filter(t=>t.id!==id);save()}}
-document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));['home','trips','add','backup'].forEach(id=>document.getElementById(id).classList.toggle('hidden',id!==b.dataset.tab))}));
-document.querySelector('[name=date]').value=new Date().toISOString().slice(0,10);
-document.getElementById('tripForm').addEventListener('submit',e=>{e.preventDefault();const d=Object.fromEntries(new FormData(e.target));if(num(d.endKm)<num(d.startKm))return alert('Ending KM, Starting KM-ஐ விட அதிகமாக இருக்க வேண்டும்.');if(num(d.received)>num(d.rent))return alert('Received amount, Rent-ஐ விட அதிகமாக உள்ளது. சரிபார்க்கவும்.');trips.push({...d,id:Date.now().toString()});save();e.target.reset();e.target.date.value=new Date().toISOString().slice(0,10);document.querySelector('[data-tab="home"]').click();alert('Trip பதிவு செய்யப்பட்டது!')});
-function download(name,content,type){const blob=new Blob([content],{type}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();URL.revokeObjectURL(a.href)}
-document.getElementById('export').onclick=()=>download('tamil-dhesam-backup.json',JSON.stringify(trips,null,2),'application/json');
-document.getElementById('csv').onclick=()=>{const cols=['date','customer','from','to','startKm','endKm','rent','received','diesel','toll','food','permit','loading','other','notes'];const rows=[cols.join(','),...trips.map(t=>cols.map(k=>'"'+String(t[k]??'').replace(/"/g,'""')+'"').join(','))];download('tamil-dhesam-trips.csv','\ufeff'+rows.join('\n'),'text/csv;charset=utf-8')};
-document.getElementById('restoreFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const data=JSON.parse(await f.text());if(!Array.isArray(data))throw Error();if(confirm('Backup-ஐ Restore செய்யலாமா? தற்போதைய பதிவுகள் மாற்றப்படும்.')){trips=data;save();alert('Backup Restore செய்யப்பட்டது')}}catch{alert('சரியான Backup JSON file தேர்வு செய்யவும்')}e.target.value=''};
-document.getElementById('clear').onclick=()=>{if(confirm('அனைத்து Trip பதிவுகளையும் நிரந்தரமாக அழிக்க வேண்டுமா? முதலில் Backup எடுத்துக்கொள்ளுங்கள்.')){trips=[];save()}};
-if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
-render();
-</script>
-</body></html>
+
+function calcValues() {
+  const startKm = parseFloat(document.getElementById('startKm').value) || 0;
+  const endKm = parseFloat(document.getElementById('endKm').value) || 0;
+  const liters = parseFloat(document.getElementById('dieselLiters').value) || 0;
+  const rate = parseFloat(document.getElementById('dieselRate').value) || 0;
+  const batta = parseFloat(document.getElementById('driverBatta').value) || 0;
+  const toll = parseFloat(document.getElementById('tollExpense').value) || 0;
+  const totalAmt = parseFloat(document.getElementById('totalAmount').value) || 0;
+  const recAmt = parseFloat(document.getElementById('receivedAmount').value) || 0;
+
+  // Total KM
+  const totalKm = endKm >= startKm ? (endKm - startKm) : 0;
+  document.getElementById('totalKm').value = totalKm.toFixed(1);
+
+  // Diesel & Mileage
+  const dieselCost = liters * rate;
+  document.getElementById('dieselCost').value = dieselCost.toFixed(0);
+  const mileage = liters > 0 ? (totalKm / liters).toFixed(2) : "0.00";
+  document.getElementById('mileage').value = mileage;
+
+  // Pending Balance
+  const pending = totalAmt - recAmt;
+  document.getElementById('pendingBalance').value = pending.toFixed(0);
+
+  // Net Profit = Total Rent - (Diesel + Driver Batta + Toll)
+  const netProfit = totalAmt - (dieselCost + batta + toll);
+  document.getElementById('netProfit').value = netProfit.toFixed(0);
+}
+
+document.getElementById('tripForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const editIdx = parseInt(document.getElementById('editIndex').value);
+
+  const data = {
+    date: document.getElementById('tripDate').value,
+    transportName: document.getElementById('transportName').value,
+    customerName: document.getElementById('customerName').value,
+    customerPhone: document.getElementById('customerPhone').value,
+    route: document.getElementById('route').value,
+    startKm: parseFloat(document.getElementById('startKm').value) || 0,
+    endKm: parseFloat(document.getElementById('endKm').value) || 0,
+    totalKm: parseFloat(document.getElementById('totalKm').value) || 0,
+    dieselLiters: parseFloat(document.getElementById('dieselLiters').value) || 0,
+    dieselRate: parseFloat(document.getElementById('dieselRate').value) || 0,
+    dieselCost: parseFloat(document.getElementById('dieselCost').value) || 0,
+    mileage: document.getElementById('mileage').value,
+    driverBatta: parseFloat(document.getElementById('driverBatta').value) || 0,
+    tollExpense: parseFloat(document.getElementById('tollExpense').value) || 0,
+    totalAmount: parseFloat(document.getElementById('totalAmount').value) || 0,
+    receivedAmount: parseFloat(document.getElementById('receivedAmount').value) || 0,
+    pendingBalance: parseFloat(document.getElementById('pendingBalance').value) || 0,
+    netProfit: parseFloat(document.getElementById('netProfit').value) || 0,
+    courierStatus: document.getElementById('courierStatus').value
+  };
+
+  if (editIdx === -1) {
+    trips.unshift(data);
+  } else {
+    trips[editIdx] = data;
+  }
+
+  localStorage.setItem('td_transport_trips_v2', JSON.stringify(trips));
+  resetForm();
+  updateDashboard();
+  switchTab('list');
+});
+
+function editTrip(index) {
+  const t = trips[index];
+  document.getElementById('editIndex').value = index;
+  document.getElementById('tripDate').value = t.date;
+  document.getElementById('transportName').value = t.transportName;
+  document.getElementById('customerName').value = t.customerName;
+  document.getElementById('customerPhone').value = t.customerPhone;
+  document.getElementById('route').value = t.route;
+  document.getElementById('startKm').value = t.startKm;
+  document.getElementById('endKm').value = t.endKm;
+  document.getElementById('totalKm').value = t.totalKm;
+  document.getElementById('dieselLiters').value = t.dieselLiters;
+  document.getElementById('dieselRate').value = t.dieselRate;
+  document.getElementById('dieselCost').value = t.dieselCost;
+  document.getElementById('mileage').value = t.mileage;
+  document.getElementById('driverBatta').value = t.driverBatta || 0;
+  document.getElementById('tollExpense').value = t.tollExpense || 0;
+  document.getElementById('totalAmount').value = t.totalAmount;
+  document.getElementById('receivedAmount').value = t.receivedAmount;
+  document.getElementById('pendingBalance').value = t.pendingBalance;
+  document.getElementById('netProfit').value = t.netProfit || 0;
+  document.getElementById('courierStatus').value = t.courierStatus;
+
+  document.getElementById('formHeading').innerText = "✏️ Trip விவரம் திருத்துக";
+  document.getElementById('submitBtn').innerText = "✅ Update Trip";
+  document.getElementById('submitBtn').className = "btn btn-gold";
+  document.getElementById('editBadge').classList.remove('hidden');
+
+  switchTab('entry');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function deleteTrip(index) {
+  if (confirm("இந்த Trip பதிவை நீக்க வேண்டுமா?")) {
+    trips.splice(index, 1);
+    localStorage.setItem('td_transport_trips_v2', JSON.stringify(trips));
+    updateDashboard();
+    renderTrips();
+  }
+}
+
+function resetForm() {
+  document.getElementById('tripForm').reset();
+  document.getElementById('editIndex').value = "-1";
+  document.getElementById('tripDate').valueAsDate = new Date();
+  document.getElementById('dieselRate').value = "94";
+ 
