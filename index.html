@@ -77,6 +77,8 @@ footer{position:fixed;bottom:0;left:0;right:0;background:#ffffffed;border-top:1p
    <div class="formgrid">
     <div><label>Trip Date</label><input name="date" type="date" required></div>
     <div><label>Customer / Party</label><input name="customer" placeholder="Customer name"></div>
+   <div><label>Customer Mobile Number</label>
+<input name="customerPhone" type="tel" placeholder="Mobile number"></div>
     <div><label>Loading Place *</label><input name="from" placeholder="Chennai" required></div>
     <div><label>Unloading Place *</label><input name="to" placeholder="Pune" required></div>
     <div><label>Starting KM *</label><input name="startKm" type="number" min="0" step="0.1" required></div>
@@ -84,6 +86,10 @@ footer{position:fixed;bottom:0;left:0;right:0;background:#ffffffed;border-top:1p
     <div><label>Total Rent (₹) *</label><input name="rent" type="number" min="0" required></div>
     <div><label>Amount Received (₹)</label><input name="received" type="number" min="0" value="0"></div>
     <div><label>Diesel (₹)</label><input name="diesel" type="number" min="0" value="0"></div>
+     <div>
+<label>Diesel Filled (Litres)</label>
+<input name="litres" type="number" min="0" step="0.01" value="0">
+</div>
     <div><label>Toll (₹)</label><input name="toll" type="number" min="0" value="0"></div>
     <div><label>Food (₹)</label><input name="food" type="number" min="0" value="0"></div>
     <div><label>Permit / RTO (₹)</label><input name="permit" type="number" min="0" value="0"></div>
