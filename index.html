@@ -392,4 +392,824 @@ main{max-width:760px;margin:auto;padding:14px}
             <label>Driver Batta (₹)</label>
             <input type="number" id="driverBatta" placeholder="0" oninput="calcValues()">
           </div>
-          <
+            <div class="field">
+            <label>Toll / Unloading (₹)</label>
+            <input type="number" id="tollExpense" placeholder="0" oninput="calcValues()">
+          </div>
+        </div>
+
+        <div class="sec-lbl">3. Freight & Payment (வாடகை & வரவு)</div>
+        <div class="grid-3">
+          <div class="field">
+            <label>Freight Amount (₹) *</label>
+            <input type="number" id="totalAmount" placeholder="0" oninput="calcValues()" required>
+          </div>
+          <div class="field">
+            <label>Advance / Recd (₹) *</label>
+            <input type="number" id="receivedAmount" placeholder="0" oninput="calcValues()" required>
+          </div>
+          <div class="field">
+            <label>Balance Due (₹)</label>
+            <input type="number" id="pendingBalance" class="auto-box" readonly value="0">
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="field">
+            <label>Net Profit (நிகர லாபம் ₹)</label>
+            <input type="number" id="netProfit" class="profit-box" readonly value="0">
+          </div>
+          <div class="field">
+            <label>Delivery Status</label>
+            <select id="courierStatus">
+              <option value="In Transit">🚚 In Transit</option>
+              <option value="Delivered">✅ Settled / Delivered</option>
+              <option value="Pending">⏳ POD / Payment Due</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button type="submit" class="btn btn-navy">💾 Save Trip</button>
+          <button type="button" class="btn btn-light" onclick="resetForm()">Clear</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ==================== 4. TOOLS TAB ==================== -->
+  <section id="view-tools" class="hidden">
+    <h2 style="margin:0 0 12px;font-size:17px">Transport Tools</h2>
+    <div class="tools-grid">
+      <div class="tool-card" onclick="toggleToolBox('calcTool')">
+        <div class="tool-ico">🧮</div>
+        <h4>Trip Cost Calculator</h4>
+        <p>Diesel, KM & Profit estimate</p>
+      </div>
+      <div class="tool-card" onclick="toggleToolBox('docTool')">
+        <div class="tool-ico">📁</div>
+        <h4>Truck Documents</h4>
+        <p>FC, Insurance & Permit dates</p>
+      </div>
+      <div class="tool-card" onclick="openView('reports')">
+        <div class="tool-ico">📊</div>
+        <h4>Profit & Diesel Report</h4>
+        <p>Filter by Vehicle / Driver</p>
+      </div>
+      <div class="tool-card" onclick="shareBusinessCard()">
+        <div class="tool-ico">🪪</div>
+        <h4>Business Card</h4>
+        <p>Share Tamil Dhesam info</p>
+      </div>
+    </div>
+
+    <!-- Trip Cost Calculator Box -->
+    <div id="calcTool" class="card" style="margin-top:14px">
+      <h3 style="margin:0 0 10px;font-size:15px">🧮 Quick Trip Cost Estimator</h3>
+      <div class="grid-2">
+        <div class="field"><label>Total Distance (KM)</label><input type="number" id="tcKm" placeholder="500" oninput="runQuickCalc()"></div>
+        <div class="field"><label>Expected Mileage (KM/L)</label><input type="number" id="tcMil" value="12" oninput="runQuickCalc()"></div>
+      </div>
+      <div class="grid-2">
+        <div class="field"><label>Diesel Price (₹/L)</label><input type="number" id="tcRate" value="94" oninput="runQuickCalc()"></div>
+        <div class="field"><label>Toll + Batta + Misc (₹)</label><input type="number" id="tcMisc" placeholder="2500" oninput="runQuickCalc()"></div>
+      </div>
+      <div class="field"><label>Quote Freight to Customer (₹)</label><input type="number" id="tcQuote" placeholder="14000" oninput="runQuickCalc()"></div>
+      <div style="background:#f8fafc;padding:12px;border-radius:10px;border:1px solid var(--line);font-size:13px">
+        <div style="display:flex;justify-content:space-between;margin-bottom:4px"><span>Est. Diesel Needed:</span><strong id="tcResLiters">0 L (₹0)</strong></div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:4px"><span>Total Trip Cost:</span><strong id="tcResCost" style="color:var(--red)">₹0</strong></div>
+        <div style="display:flex;justify-content:space-between;font-size:15px;border-top:1px dashed var(--line);padding-top:6px"><span>Estimated Profit:</span><strong id="tcResProfit" style="color:var(--green)">₹0</strong></div>
+      </div>
+    </div>
+
+    <!-- Truck Documents & Reminders Box -->
+    <div id="docTool" class="card hidden" style="margin-top:14px">
+      <h3 style="margin:0 0 10px;font-size:15px">📁 TN 13 Z 1647 - Document Reminders</h3>
+      <div class="grid-2">
+        <div class="field"><label>Fitness Certificate (FC) Expiry</label><input type="date" id="docFC" onchange="saveDocs()"></div>
+        <div class="field"><label>Insurance Expiry</label><input type="date" id="docIns" onchange="saveDocs()"></div>
+      </div>
+      <div class="grid-2">
+        <div class="field"><label>National / State Permit</label><input type="date" id="docPermit" onchange="saveDocs()"></div>
+        <div class="field"><label>PUC / Emission Expiry</label><input type="date" id="docPUC" onchange="saveDocs()"></div>
+      </div>
+      <p style="font-size:11.5px;color:var(--green);margin:4px 0 0" id="docSavedMsg">Auto-saved on your device.</p>
+    </div>
+  </section>
+
+  <!-- ==================== 5. DIRECTORY (PARTY KHATA) ==================== -->
+  <section id="view-directory" class="hidden">
+    <div class="sub-header">
+      <h2>Parties / Customers</h2>
+      <span class="pill-btn" id="dirTotalBal">Total Due: ₹0</span>
+    </div>
+    <input type="text" id="partySearch" class="search-input" placeholder="🔍 Search Party Name..." oninput="renderDirectory()">
+    <div id="directoryList"></div>
+  </section>
+
+  <!-- ==================== 6. REPORTS & FILTER VIEW ==================== -->
+  <section id="view-reports" class="hidden">
+    <div class="sub-header">
+      <div class="back-title">
+        <button class="back-btn" onclick="goMainTab('khata')">←</button>
+        <h2>Balance & Profit Reports</h2>
+      </div>
+      <button class="pill-btn gold" onclick="downloadFilteredExcel()">📥 Excel</button>
+    </div>
+
+    <div class="card">
+      <div class="grid-2">
+        <div class="field">
+          <label>Filter By</label>
+          <select id="filterCategory" onchange="populateFilterValues()">
+            <option value="all">All Records</option>
+            <option value="customer">👤 Party / Customer</option>
+            <option value="vehicle">🚛 Truck Number</option>
+            <option value="driver">👨‍✈️ Driver Name</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Select Name / No</label>
+          <select id="filterValue" onchange="generateReport()">
+            <option value="all">All</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="field">
+          <label>Period</label>
+          <select id="dateRangeType" onchange="handleDateRangeChange()">
+            <option value="all">All Time</option>
+            <option value="1m">This Month</option>
+            <option value="2m">Last 2 Months</option>
+            <option value="custom">Custom Dates</option>
+          </select>
+        </div>
+        <div class="field" style="display:flex;align-items:flex-end">
+          <button type="button" class="btn btn-green" style="padding:10px;font-size:12.5px" onclick="openCombinedInvoice()">🧾 Generate Party Invoice</button>
+        </div>
+      </div>
+
+      <div id="customDateBox" class="grid-2 hidden">
+        <div class="field"><label>From</label><input type="date" id="fromDate" onchange="generateReport()"></div>
+        <div class="field"><label>To</label><input type="date" id="toDate" onchange="generateReport()"></div>
+      </div>
+    </div>
+
+    <div class="rep-banner">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <strong id="reportTitle" style="color:var(--gold)">All Trips Summary</strong>
+        <span style="font-size:12px" id="repTripsCount">0 Trips</span>
+      </div>
+      <div class="rep-grid">
+        <div class="rep-box"><span>Total Freight</span><strong id="repTotal">₹0</strong></div>
+        <div class="rep-box"><span>Received</span><strong id="repRec" style="color:#86efac">₹0</strong></div>
+        <div class="rep-box"><span>Balance Due</span><strong id="repPen" style="color:#fca5a5">₹0</strong></div>
+        <div class="rep-box"><span>Total KM</span><strong id="repKm">0 km</strong></div>
+        <div class="rep-box"><span>Diesel + Exp</span><strong id="repExp">₹0</strong></div>
+        <div class="rep-box"><span>Net Profit</span><strong id="repProfit" style="color:var(--gold)">₹0</strong></div>
+      </div>
+    </div>
+
+    <div id="reportTripsContainer"></div>
+  </section>
+
+</main>
+
+<!-- BOTTOM NAVIGATION BAR -->
+<nav class="bottom-nav no-print">
+  <button class="nav-item active" id="nav-khata" onclick="goMainTab('khata')">
+    <div class="nav-pill">🏠</div>
+    <span>Khata</span>
+  </button>
+  <button class="nav-item" id="nav-tools" onclick="goMainTab('tools')">
+    <div class="nav-pill">₹</div>
+    <span>Tools</span>
+  </button>
+  <button class="nav-item" id="nav-directory" onclick="goMainTab('directory')">
+    <div class="nav-pill">📒</div>
+    <span>Directory</span>
+  </button>
+</nav>
+
+<!-- TAX INVOICE & ANNEXURE PREVIEW MODAL -->
+<div id="invoiceModal" class="modal hidden">
+  <div class="modal-box">
+    <div class="modal-top no-print">
+      <strong>Invoice Preview</strong>
+      <button onclick="closeInvoice()" style="background:none;border:none;color:#fff;font-size:20px;cursor:pointer">✕</button>
+    </div>
+
+    <div class="inv-paper" id="invoicePaper"></div>
+
+    <div class="modal-actions no-print">
+      <button class="btn btn-blue" onclick="window.print()">🖨️ Save PDF / Print</button>
+      <button class="btn btn-green" id="invWaBtn">📲 Share WhatsApp</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let trips = JSON.parse(localStorage.getItem('td_transport_trips_v3')) || [];
+let currentTripFilterMode = 'all';
+let currentReportTrips = [];
+
+document.getElementById('tripDate').valueAsDate = new Date();
+loadDocs();
+
+function hideAllViews() {
+  ['view-khata','view-trips','view-form','view-tools','view-directory','view-reports'].forEach(id => {
+    document.getElementById(id).classList.add('hidden');
+  });
+}
+
+function goMainTab(tab) {
+  hideAllViews();
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  if (tab === 'khata') {
+    document.getElementById('view-khata').classList.remove('hidden');
+    document.getElementById('nav-khata').classList.add('active');
+    updateDashboard();
+  } else if (tab === 'tools') {
+    document.getElementById('view-tools').classList.remove('hidden');
+    document.getElementById('nav-tools').classList.add('active');
+  } else if (tab === 'directory') {
+    document.getElementById('view-directory').classList.remove('hidden');
+    document.getElementById('nav-directory').classList.add('active');
+    renderDirectory();
+  }
+}
+
+function openView(viewName) {
+  hideAllViews();
+  document.getElementById('view-' + viewName).classList.remove('hidden');
+  if (viewName === 'reports') {
+    populateFilterValues();
+  }
+}
+
+function openTripsView(mode) {
+  currentTripFilterMode = mode;
+  document.getElementById('tripsPageTitle').innerText = mode === 'pending' ? 'Unpaid / Pending Trips' : 'My Trips';
+  openView('trips');
+  renderTripsList();
+}
+
+function openAddTrip() {
+  resetForm();
+  document.getElementById('lrNumber').value = 'LRN-' + (101 + trips.length);
+  openView('form');
+}
+
+function openReportPreset(cat) {
+  openView('reports');
+  document.getElementById('filterCategory').value = cat;
+  populateFilterValues();
+}
+
+function calcValues() {
+  const sKm = parseFloat(document.getElementById('startKm').value) || 0;
+  const eKm = parseFloat(document.getElementById('endKm').value) || 0;
+  const liters = parseFloat(document.getElementById('dieselLiters').value) || 0;
+  const rate = parseFloat(document.getElementById('dieselRate').value) || 0;
+  const batta = parseFloat(document.getElementById('driverBatta').value) || 0;
+  const toll = parseFloat(document.getElementById('tollExpense').value) || 0;
+  const total = parseFloat(document.getElementById('totalAmount').value) || 0;
+  const rec = parseFloat(document.getElementById('receivedAmount').value) || 0;
+
+  const tKm = eKm > sKm ? (eKm - sKm) : 0;
+  const mil = (tKm > 0 && liters > 0) ? (tKm / liters) : 0;
+  const dCost = Math.round(liters * rate);
+  const pending = total - rec;
+  const profit = total - (dCost + batta + toll);
+
+  document.getElementById('totalKm').value = tKm.toFixed(1);
+  document.getElementById('mileage').value = mil.toFixed(2);
+  document.getElementById('dieselCost').value = dCost;
+  document.getElementById('pendingBalance').value = pending;
+  document.getElementById('netProfit').value = profit;
+}
+
+document.getElementById('tripForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  calcValues();
+  const editIdx = parseInt(document.getElementById('editIndex').value);
+
+  const tripData = {
+    id: editIdx >= 0 ? trips[editIdx].id : Date.now(),
+    lrNumber: document.getElementById('lrNumber').value.trim() || ('LRN-' + (101 + trips.length)),
+    tripDate: document.getElementById('tripDate').value,
+    transportName: 'Tamil Dhesam Transport',
+    vehicleNumber: document.getElementById('vehicleNumber').value.trim().toUpperCase(),
+    driverName: document.getElementById('driverName').value.trim(),
+    customerName: document.getElementById('customerName').value.trim(),
+    customerPhone: document.getElementById('customerPhone').value.trim(),
+    route: document.getElementById('route').value.trim(),
+    startKm: parseFloat(document.getElementById('startKm').value) || 0,
+    endKm: parseFloat(document.getElementById('endKm').value) || 0,
+    totalKm: parseFloat(document.getElementById('totalKm').value) || 0,
+    dieselLiters: parseFloat(document.getElementById('dieselLiters').value) || 0,
+    dieselRate: parseFloat(document.getElementById('dieselRate').value) || 0,
+    mileage: parseFloat(document.getElementById('mileage').value) || 0,
+    dieselCost: parseFloat(document.getElementById('dieselCost').value) || 0,
+    driverBatta: parseFloat(document.getElementById('driverBatta').value) || 0,
+    tollExpense: parseFloat(document.getElementById('tollExpense').value) || 0,
+    totalAmount: parseFloat(document.getElementById('totalAmount').value) || 0,
+    receivedAmount: parseFloat(document.getElementById('receivedAmount').value) || 0,
+    pendingBalance: parseFloat(document.getElementById('pendingBalance').value) || 0,
+    netProfit: parseFloat(document.getElementById('netProfit').value) || 0,
+    courierStatus: document.getElementById('courierStatus').value
+  };
+
+  if (editIdx >= 0) {
+    trips[editIdx] = tripData;
+  } else {
+    trips.unshift(tripData);
+  }
+
+  saveData();
+  resetForm();
+  openTripsView('all');
+});
+
+function saveData() {
+  localStorage.setItem('td_transport_trips_v3', JSON.stringify(trips));
+  updateDashboard();
+  updateDatalists();
+}
+
+function resetForm() {
+  document.getElementById('tripForm').reset();
+  document.getElementById('editIndex').value = '-1';
+  document.getElementById('tripDate').valueAsDate = new Date();
+  document.getElementById('vehicleNumber').value = 'TN 13 Z 1647';
+  document.getElementById('driverName').value = 'Munish';
+  document.getElementById('dieselRate').value = '94';
+  document.getElementById('formHeading').innerText = 'New Trip Entry';
+  document.getElementById('editModeTag').classList.add('hidden');
+  calcValues();
+}
+
+function editTrip(index) {
+  const t = trips[index];
+  document.getElementById('editIndex').value = index;
+  document.getElementById('lrNumber').value = t.lrNumber || ('LRN-' + (101 + index));
+  document.getElementById('tripDate').value = t.tripDate;
+  document.getElementById('vehicleNumber').value = t.vehicleNumber;
+  document.getElementById('driverName').value = t.driverName;
+  document.getElementById('customerName').value = t.customerName;
+  document.getElementById('customerPhone').value = t.customerPhone;
+  document.getElementById('route').value = t.route;
+  document.getElementById('startKm').value = t.startKm;
+  document.getElementById('endKm').value = t.endKm;
+  document.getElementById('dieselLiters').value = t.dieselLiters;
+  document.getElementById('dieselRate').value = t.dieselRate;
+  document.getElementById('driverBatta').value = t.driverBatta;
+  document.getElementById('tollExpense').value = t.tollExpense;
+  document.getElementById('totalAmount').value = t.totalAmount;
+  document.getElementById('receivedAmount').value = t.receivedAmount;
+  document.getElementById('courierStatus').value = t.courierStatus;
+
+  calcValues();
+  document.getElementById('formHeading').innerText = 'Edit Trip';
+  document.getElementById('editModeTag').classList.remove('hidden');
+  openView('form');
+}
+
+function markPaid(index) {
+  if (confirm('Full payment received-ah mark pannava?')) {
+    trips[index].receivedAmount = trips[index].totalAmount;
+    trips[index].pendingBalance = 0;
+    trips[index].courierStatus = 'Delivered';
+    saveData();
+    renderTripsList();
+  }
+}
+
+function deleteTrip(index) {
+  if (confirm('Indha trip record-ai delete pannava?')) {
+    trips.splice(index, 1);
+    saveData();
+    renderTripsList();
+  }
+}
+
+function updateDashboard() {
+  let pending = 0, profit = 0, km = 0, unpaidTrips = 0;
+  trips.forEach(t => {
+    pending += Number(t.pendingBalance || 0);
+    profit += Number(t.netProfit || 0);
+    km += Number(t.totalKm || 0);
+    if (Number(t.pendingBalance) > 0) unpaidTrips++;
+  });
+  document.getElementById('dashPending').innerText = '₹' + pending.toLocaleString('en-IN');
+  document.getElementById('dashProfit').innerText = '₹' + profit.toLocaleString('en-IN');
+  document.getElementById('dashKm').innerText = `${trips.length} Trips • ${km.toFixed(0)} KM`;
+  document.getElementById('badgeUnpaid').innerText = unpaidTrips;
+}
+
+function renderTripsList() {
+  const q = (document.getElementById('tripSearch').value || '').toLowerCase();
+  const container = document.getElementById('tripsListContainer');
+  container.innerHTML = '';
+
+  const filtered = trips.map((t, idx) => ({...t, origIdx: idx})).filter(t => {
+    if (currentTripFilterMode === 'pending' && Number(t.pendingBalance) <= 0) return false;
+    return (t.customerName + ' ' + t.vehicleNumber + ' ' + t.route + ' ' + (t.lrNumber||'')).toLowerCase().includes(q);
+  });
+
+  if (filtered.length === 0) {
+    container.innerHTML = '<div class="card" style="text-align:center;color:var(--muted)">No trips found. "+ Add Trip" click panni add pannunga.</div>';
+    return;
+  }
+
+  filtered.forEach(t => {
+    const isDue = Number(t.pendingBalance) > 0;
+    const dotClass = isDue ? 'dot-red' : (t.courierStatus === 'In Transit' ? 'dot-orange' : 'dot-green');
+    const statusText = isDue ? `Due: ₹${t.pendingBalance}` : (t.courierStatus === 'In Transit' ? 'In Transit' : 'Settled');
+
+    container.innerHTML += `
+      <div class="trip-card">
+        <div class="tc-top">
+          <div>
+            <div class="tc-party">${t.customerName}</div>
+            <div class="tc-veh">${t.vehicleNumber}</div>
+          </div>
+          <div class="tc-amt-pill ${isDue ? 'due' : ''}">₹${Number(t.pendingBalance).toLocaleString('en-IN')} ›</div>
+        </div>
+        <div class="tc-route">${t.route}</div>
+        <div class="tc-meta">
+          <span>📅 ${t.tripDate} • ${t.totalKm} KM (${t.mileage} km/l)</span>
+          <span>Freight: ₹${t.totalAmount}</span>
+        </div>
+        <div class="tc-bottom">
+          <div class="status-dot"><span class="dot ${dotClass}"></span> ${statusText}</div>
+          <div class="lrn-tag">#${t.lrNumber || 'LRN-' + (101 + t.origIdx)}</div>
+        </div>
+        <div class="tc-actions">
+          <button class="mini-btn" style="background:#dcfce7;color:#15803d" onclickonclick="openSingleInvoice(${t.origIdx})">🧾 Invoice</button>
+          ${isDue ? `<button class="mini-btn" style="background:#15803d;color:#fff" onclick="markPaid(${t.origIdx})">✅ Settle</button>` : ''}
+          <a class="mini-btn" style="background:#eff6ff;color:#1d4ed8" href="tel:${t.customerPhone}">📞 Call</a>
+          <button class="mini-btn" style="background:#f1f5f9;color:#334155" onclick="editTrip(${t.origIdx})">✏️</button>
+          <button class="mini-btn" style="background:#fee2e2;color:#dc2626" onclick="deleteTrip(${t.origIdx})">🗑️</button>
+        </div>
+      </div>
+    `;
+  });
+}
+
+function renderDirectory() {
+  const q = (document.getElementById('partySearch').value || '').toLowerCase();
+  const partyMap = {};
+  let grandDue = 0;
+
+  trips.forEach(t => {
+    const name = t.customerName || 'Unknown';
+    if (!partyMap[name]) partyMap[name] = { name, count: 0, due: 0, phone: t.customerPhone };
+    partyMap[name].count++;
+    partyMap[name].due += Number(t.pendingBalance || 0);
+    grandDue += Number(t.pendingBalance || 0);
+  });
+
+  document.getElementById('dirTotalBal').innerText = 'Total Due: ₹' + grandDue.toLocaleString('en-IN');
+  const list = document.getElementById('directoryList');
+  list.innerHTML = '';
+
+  const colors = ['#c2410c','#7e22ce','#dc2626','#15803d','#1d4ed8'];
+  Object.values(partyMap).filter(p => p.name.toLowerCase().includes(q)).forEach((p, i) => {
+    const initials = p.name.substring(0, 2).toUpperCase();
+    const bg = colors[i % colors.length];
+    list.innerHTML += `
+      <div class="party-row" onclick="openPartyTrips('${p.name.replace(/'/g, "\\'")}')">
+        <div class="party-left">
+          <div class="avatar" style="background:${bg}">${initials}</div>
+          <div>
+            <div class="party-name">${p.name}</div>
+            <div class="party-trips">${p.count} Trips • ${p.phone || ''}</div>
+          </div>
+        </div>
+        <div class="party-bal" style="color:${p.due > 0 ? 'var(--red)' : 'var(--ink)'}">₹${p.due.toLocaleString('en-IN')} ›</div>
+      </div>
+    `;
+  });
+}
+
+function openPartyTrips(partyName) {
+  openView('reports');
+  document.getElementById('filterCategory').value = 'customer';
+  populateFilterValues();
+  document.getElementById('filterValue').value = partyName;
+  generateReport();
+}
+
+function populateFilterValues() {
+  const cat = document.getElementById('filterCategory').value;
+  const valSelect = document.getElementById('filterValue');
+  valSelect.innerHTML = '<option value="all">All</option>';
+
+  if (cat !== 'all') {
+    const key = cat === 'vehicle' ? 'vehicleNumber' : (cat === 'driver' ? 'driverName' : 'customerName');
+    const unique = [...new Set(trips.map(t => t[key]).filter(Boolean))];
+    unique.forEach(u => {
+      valSelect.innerHTML += `<option value="${u}">${u}</option>`;
+    });
+  }
+  generateReport();
+}
+
+function handleDateRangeChange() {
+  const type = document.getElementById('dateRangeType').value;
+  document.getElementById('customDateBox').classList.toggle('hidden', type !== 'custom');
+  generateReport();
+}
+
+function generateReport() {
+  const cat = document.getElementById('filterCategory').value;
+  const val = document.getElementById('filterValue').value;
+  const range = document.getElementById('dateRangeType').value;
+  const now = new Date();
+
+  currentReportTrips = trips.filter(t => {
+    if (cat !== 'all' && val !== 'all') {
+      const key = cat === 'vehicle' ? 'vehicleNumber' : (cat === 'driver' ? 'driverName' : 'customerName');
+      if (t[key] !== val) return false;
+    }
+    const d = new Date(t.tripDate);
+    if (range === '1m') {
+      if (d.getMonth() !== now.getMonth() || d.getFullYear() !== now.getFullYear()) return false;
+    } else if (range === '2m') {
+      const twoM = new Date(); 
+      twoM.setMonth(now.getMonth() - 2);
+      if (d < twoM) return false;
+    } else if (range === 'custom') {
+      const f = document.getElementById('fromDate').value;
+      const to = document.getElementById('toDate').value;
+      if (f && t.tripDate < f) return false;
+      if (to && t.tripDate > to) return false;
+    }
+    return true;
+  });
+
+  let tot = 0, rec = 0, pen = 0, km = 0, exp = 0, prof = 0;
+  const cont = document.getElementById('reportTripsContainer');
+  cont.innerHTML = '';
+
+  currentReportTrips.forEach((t, idx) => {
+    tot += Number(t.totalAmount || 0);
+    rec += Number(t.receivedAmount || 0);
+    pen += Number(t.pendingBalance || 0);
+    km += Number(t.totalKm || 0);
+    exp += Number(t.dieselCost || 0) + Number(t.driverBatta || 0) + Number(t.tollExpense || 0);
+    prof += Number(t.netProfit || 0);
+
+    cont.innerHTML += `
+      <div class="trip-card">
+        <div class="tc-top">
+          <div><strong>${t.customerName}</strong> • <span style="color:var(--blue)">${t.vehicleNumber}</span></div>
+          <strong>₹${t.totalAmount}</strong>
+        </div>
+        <div class="tc-route" style="font-size:12.5px">${t.route} (${t.tripDate})</div>
+        <div class="tc-meta" style="border:none;padding:0">
+          <span>Recd: ₹${t.receivedAmount} | Due: ₹${t.pendingBalance}</span>
+          <span style="color:var(--green);font-weight:700">Profit: ₹${t.netProfit}</span>
+        </div>
+      </div>
+    `;
+  });
+
+  document.getElementById('reportTitle').innerText = val === 'all' ? 'Summary Report' : `${val} - Report`;
+  document.getElementById('repTripsCount').innerText = `${currentReportTrips.length} Trips`;
+  document.getElementById('repTotal').innerText = '₹' + tot.toLocaleString('en-IN');
+  document.getElementById('repRec').innerText = '₹' + rec.toLocaleString('en-IN');
+  document.getElementById('repPen').innerText = '₹' + pen.toLocaleString('en-IN');
+  document.getElementById('repKm').innerText = km.toFixed(0) + ' km';
+  document.getElementById('repExp').innerText = '₹' + exp.toLocaleString('en-IN');
+  document.getElementById('repProfit').innerText = '₹' + prof.toLocaleString('en-IN');
+}
+
+function openSingleInvoice(index) {
+  renderInvoiceModal([trips[index]], trips[index].customerName, trips[index].customerPhone);
+}
+
+function openCombinedInvoice() {
+  if (currentReportTrips.length === 0) return alert('No trips in this report to generate invoice.');
+  const party = currentReportTrips[0].customerName;
+  const phone = currentReportTrips[0].customerPhone;
+  renderInvoiceModal(currentReportTrips, party, phone);
+}
+
+function renderInvoiceModal(list, partyName, phone) {
+  let freightSum = 0, advSum = 0, balSum = 0;
+  let rowsHtml = '';
+
+    list.forEach((t, i) => {
+    freightSum += Number(t.totalAmount || 0);
+    advSum += Number(t.receivedAmount || 0);
+    balSum += Number(t.pendingBalance || 0);
+    rowsHtml += `
+      <tr>
+        <td>${i + 1}</td>
+        <td>${t.lrNumber || ('LRN-' + (101 + i))}</td>
+        <td>${t.tripDate}</td>
+        <td>${t.vehicleNumber}</td>
+        <td>${t.route}</td>
+        <td>₹${Number(t.totalAmount).toLocaleString('en-IN')}</td>
+        <td>₹${Number(t.receivedAmount).toLocaleString('en-IN')}</td>
+        <td><strong>₹${Number(t.pendingBalance).toLocaleString('en-IN')}</strong></td>
+      </tr>
+    `;
+  });
+
+  const invNo = 'TDT-' + String(Math.floor(100 + Math.random() * 900));
+  const today = new Date().toISOString().split('T')[0];
+
+  document.getElementById('invoicePaper').innerHTML = `
+    <div class="inv-head">
+      <div class="inv-brand">
+        <h2>Tamil Dhesam Transport</h2>
+        <p>Melapudi Village, Pallipet Taluk, Thiruvallur Dist.<br>Tamil Nadu - 631207 • Ph: +91 7401334842</p>
+      </div>
+      <div class="inv-tag">
+        <h3>Tax Invoice</h3>
+        <p>Invoice No: <strong>${invNo}</strong><br>Date: ${today}</p>
+      </div>
+    </div>
+
+    <div class="inv-billto">
+      <div>
+        <span style="font-size:10px;color:#64748b;font-weight:700">BILL TO</span><br>
+        <strong style="font-size:14px">${partyName}</strong><br>
+        <span>Phone: ${phone || '-'}</span>
+      </div>
+      <div style="text-align:right">
+        <span style="font-size:10px;color:#64748b;font-weight:700">TOTAL TRIPS</span><br>
+        <strong style="font-size:15px">${list.length}</strong>
+      </div>
+    </div>
+
+    <h4 style="margin:0 0 6px;color:var(--green)">Annexure - Trip Details</h4>
+    <table class="inv-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>LR No</th>
+          <th>Date</th>
+          <th>Truck No</th>
+          <th>Route</th>
+          <th>Freight</th>
+          <th>Received</th>
+          <th>Balance</th>
+        </tr>
+      </thead>
+      <tbody>${rowsHtml}</tbody>
+    </table>
+
+    <div class="inv-totals">
+      <div class="inv-words">
+        <strong>Terms & Conditions:</strong><br>
+        1. Goods carried at owner's risk.<br>
+        2. Please clear pending freight balance on delivery.
+      </div>
+      <div class="inv-sum-box">
+        <div class="inv-sum-row green"><span>Total Freight</span><span>₹${freightSum.toLocaleString('en-IN')}</span></div>
+        <div class="inv-sum-row"><span>Received</span><span>₹${advSum.toLocaleString('en-IN')}</span></div>
+        <div class="inv-sum-row" style="font-weight:800;color:var(--red)"><span>Balance Due</span><span>₹${balSum.toLocaleString('en-IN')}</span></div>
+      </div>
+    </div>
+
+    <div class="inv-footer">
+      <span>Generated by Tamil Dhesam Transport App</span>
+      <strong style="color:var(--navy)">For Tamil Dhesam Transport</strong>
+    </div>
+  `;
+
+  const waText = encodeURIComponent(
+    `*TAMIL DHESAM TRANSPORT*\nInvoice: ${invNo}\nParty: ${partyName}\nTrips: ${list.length}\nTotal Freight: ₹${freightSum}\nReceived: ₹${advSum}\n*Balance Due: ₹${balSum}*\nThank you for your business!`
+  );
+  document.getElementById('invWaBtn').onclick = () => window.open(`https://wa.me/91${(phone||'').replace(/\D/g,'')}?text=${waText}`, '_blank');
+
+  document.getElementById('invoiceModal').classList.remove('hidden');
+}
+
+function closeInvoice() {
+  document.getElementById('invoiceModal').classList.add('hidden');
+}
+
+function toggleToolBox(id) {
+  document.getElementById('calcTool').classList.add('hidden');
+  document.getElementById('docTool').classList.add('hidden');
+  document.getElementById(id).classList.remove('hidden');
+}
+
+function runQuickCalc() {
+  const km = parseFloat(document.getElementById('tcKm').value) || 0;
+  const mil = parseFloat(document.getElementById('tcMil').value) || 1;
+  const rate = parseFloat(document.getElementById('tcRate').value) || 0;
+  const misc = parseFloat(document.getElementById('tcMisc').value) || 0;
+  const quote = parseFloat(document.getElementById('tcQuote').value) || 0;
+
+  const liters = km / mil;
+  const dCost = Math.round(liters * rate);
+  const totCost = dCost + misc;
+  const prof = quote - totCost;
+
+  document.getElementById('tcResLiters').innerText = `${liters.toFixed(1)} L (₹${dCost})`;
+  document.getElementById('tcResCost').innerText = `₹${totCost.toLocaleString('en-IN')}`;
+  document.getElementById('tcResProfit').innerText = `₹${prof.toLocaleString('en-IN')}`;
+}
+
+function saveDocs() {
+  const docs = {
+    fc: document.getElementById('docFC').value,
+    ins: document.getElementById('docIns').value,
+    permit: document.getElementById('docPermit').value,
+    puc: document.getElementById('docPUC').value
+  };
+  localStorage.setItem('td_truck_docs', JSON.stringify(docs));
+    document.getElementById('docSavedMsg').innerText = 'Saved on ' + new Date().toLocaleTimeString();
+}
+
+function loadDocs() {
+  const docs = JSON.parse(localStorage.getItem('td_truck_docs'));
+  if (!docs) return;
+  if (docs.fc) document.getElementById('docFC').value = docs.fc;
+  if (docs.ins) document.getElementById('docIns').value = docs.ins;
+  if (docs.permit) document.getElementById('docPermit').value = docs.permit;
+  if (docs.puc) document.getElementById('docPUC').value = docs.puc;
+}
+
+function shareBusinessCard() {
+  const msg = encodeURIComponent(
+    `*TAMIL DHESAM TRANSPORT*\nProprietor: Munish\nVehicle: Tata Intra V30 Closed Container (TN 13 Z 1647)\nService: All India Interstate Parcel & Full Load Service (TN, KL, KA, MH, GJ, TS, AP)\nContact / WhatsApp: +91 7401334842\nMelapudi, Pallipet, Thiruvallur Dist.`
+  );
+  window.open(`https://wa.me/?text=${msg}`, '_blank');
+}
+
+function updateDatalists() {
+  const fill = (id, key) => {
+    const dl = document.getElementById(id);
+    dl.innerHTML = '';
+    [...new Set(trips.map(t => t[key]).filter(Boolean))].forEach(v => {
+      dl.innerHTML += `<option value="${v}">`;
+    });
+  };
+  fill('vehicleList', 'vehicleNumber');
+  fill('driverList', 'driverName');
+  fill('customerList', 'customerName');
+}
+
+function downloadBackup() {
+  const blob = new Blob([JSON.stringify(trips, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `TamilDhesam_Backup_${new Date().toISOString().split('T')[0]}.json`;
+  a.click();
+}
+
+function restoreBackup(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      const data = JSON.parse(e.target.result);
+      if (Array.isArray(data)) {
+        trips = data;
+        saveData();
+        alert('Backup successfully restored!');
+      }
+    } catch (err) {
+      alert('Invalid backup file.');
+    }
+  };
+  reader.readAsText(file);
+}
+
+function downloadFilteredExcel() {
+  exportCSV(currentReportTrips, 'Filtered_Report');
+}
+
+function exportCSV(dataList, filename) {
+  if (!dataList || dataList.length === 0) return alert('No data to export.');
+  const headers = ['LR No','Date','Vehicle','Driver','Customer','Phone','Route','Total KM','Diesel L','Mileage','Diesel Cost','Driver Batta','Toll','Freight','Received','Balance','Net Profit','Status'];
+  const rows = dataList.map(t => [
+    t.lrNumber||'', t.tripDate, t.vehicleNumber, t.driverName, t.customerName, t.customerPhone,
+    `"${t.route}"`, t.totalKm, t.dieselLiters, t.mileage, t.dieselCost, t.driverBatta, t.tollExpense,
+    t.totalAmount, t.receivedAmount, t.pendingBalance, t.netProfit, t.courierStatus
+  ]);
+  const csv = [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+  const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `${filename}_${new Date().toISOString().split('T')[0]}.csv`;
+  a.click();
+}
+
+updateDashboard();
+updateDatalists();
+</script>
+</body>
+</html>
+
+
