@@ -30,12 +30,13 @@
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans Tamil",sans-serif;padding-bottom:78px}
 
-/* TOP HEADER (TransportBook Style) */
+/* TOP HEADER */
 header{background:#fff;border-bottom:1px solid var(--line);padding:12px 16px;position:sticky;top:0;z-index:40;box-shadow:0 2px 6px rgba(0,0,0,0.03)}
 .header-inner{max-width:760px;margin:auto;display:flex;justify-content:space-between;align-items:center}
 .brand{display:flex;align-items:center;gap:10px;cursor:pointer}
-.logo-circle{width:40px;height:40px;border-radius:50%;background:var(--navy);border:2px solid var(--gold);display:grid;place-items:center;color:var(--gold);font-weight:900;font-size:15px;flex-shrink:0}
-.brand-title{font-size:16px;font-weight:800;color:var(--ink);margin:0;line-height:1.2}
+.logo-circle{width:42px;height:42px;border-radius:50%;background:var(--navy);border:2px solid var(--gold);display:grid;place-items:center;color:var(--gold);font-weight:900;font-size:15px;flex-shrink:0;overflow:hidden}
+.logo-circle img{width:100%;height:100%;object-fit:cover}
+.brand-title{font-size:15.5px;font-weight:800;color:var(--ink);margin:0;line-height:1.2}
 .brand-sub{font-size:11px;color:var(--muted);margin:0}
 .header-btns{display:flex;gap:6px}
 .pill-btn{border:1px solid var(--line);background:#fff;color:var(--ink);padding:6px 10px;border-radius:8px;font-size:11.5px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:4px}
@@ -63,7 +64,7 @@ main{max-width:760px;margin:auto;padding:14px}
 
 .add-trip-cta{width:100%;background:var(--navy);color:#fff;border:none;border-radius:12px;padding:13px;font-size:15px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 10px rgba(30,58,95,0.2)}
 
-/* CATEGORY SECTIONS (Party, Driver, Expenses) */
+/* CATEGORY SECTIONS */
 .cat-card{background:#fff;border-radius:16px;padding:14px 16px;border:1px solid var(--line);margin-bottom:14px}
 .cat-title{font-size:14px;font-weight:800;color:var(--ink);margin:0 0 14px}
 .cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;text-align:center}
@@ -91,6 +92,7 @@ main{max-width:760px;margin:auto;padding:14px}
 .field input:focus,.field select:focus{outline:none;border-color:var(--blue)}
 .auto-box{background:#f1f5f9 !important;font-weight:700;color:var(--navy) !important}
 .profit-box{background:var(--green-soft) !important;font-weight:800;color:var(--green) !important;border-color:#86efac !important}
+.hint-txt{font-size:10.5px;color:var(--muted);margin-top:2px}
 
 .btn-row{display:flex;gap:10px;margin-top:14px}
 .btn{flex:1;padding:12px;border:none;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit}
@@ -99,16 +101,16 @@ main{max-width:760px;margin:auto;padding:14px}
 .btn-blue{background:var(--blue);color:#fff}
 .btn-light{background:#e2e8f0;color:var(--ink);flex:0.45}
 
-/* TRIP LIST CARDS (Screenshot Style) */
+/* TRIP LIST CARDS */
 .search-input{width:100%;padding:11px 14px;border:1px solid var(--line);border-radius:12px;font-size:14px;margin-bottom:12px;background:#fff}
 .trip-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px;margin-bottom:10px;box-shadow:0 1px 4px rgba(0,0,0,0.02)}
 .tc-top{display:flex;justify-content:space-between;align-items:flex-start}
-.tc-party{font-size:12px;color:var(--muted);font-weight:600}
-.tc-veh{font-size:14px;font-weight:800;color:var(--blue);margin-top:2px}
+.tc-party{font-size:12.5px;color:var(--ink);font-weight:700}
+.tc-veh{font-size:12px;font-weight:700;color:var(--blue);margin-top:2px}
 .tc-amt-pill{background:#f1f5f9;padding:4px 10px;border-radius:99px;font-size:13px;font-weight:800;color:var(--ink)}
 .tc-amt-pill.due{background:var(--red-soft);color:var(--red)}
 .tc-route{font-size:13.5px;font-weight:700;color:var(--ink);margin:8px 0 4px}
-.tc-meta{display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);padding-bottom:8px;border-bottom:1px dashed var(--line)}
+.tc-meta{display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);padding-bottom:8px;border-bottom:1px dashed var(--line);flex-wrap:wrap;gap:4px}
 .tc-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
 .status-dot{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700}
 .dot{width:8px;height:8px;border-radius:50%}
@@ -116,8 +118,8 @@ main{max-width:760px;margin:auto;padding:14px}
 .dot-orange{background:var(--orange)}
 .dot-red{background:var(--red)}
 .lrn-tag{font-size:11.5px;font-weight:700;color:var(--muted)}
-.tc-actions{display:flex;gap:6px;margin-top:10px;padding-top:8px;border-top:1px solid var(--line)}
-.mini-btn{flex:1;padding:7px 4px;border-radius:8px;border:none;font-size:11px;font-weight:700;cursor:pointer;text-align:center;text-decoration:none}
+.tc-actions{display:flex;gap:5px;margin-top:10px;padding-top:8px;border-top:1px solid var(--line);flex-wrap:wrap}
+.mini-btn{flex:1;min-width:52px;padding:7px 4px;border-radius:8px;border:none;font-size:11px;font-weight:700;cursor:pointer;text-align:center;text-decoration:none}
 
 /* PARTY / DIRECTORY LIST */
 .party-row{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
@@ -135,7 +137,7 @@ main{max-width:760px;margin:auto;padding:14px}
 .tool-card h4{margin:0;font-size:13.5px;color:var(--ink)}
 .tool-card p{margin:4px 0 0;font-size:11px;color:var(--muted)}
 
-/* REPORT SUMMARY */
+/* REPORT & LEDGER SUMMARY */
 .rep-banner{background:linear-gradient(135deg,var(--navy-dark),var(--navy));color:#fff;border-radius:14px;padding:14px;margin-bottom:14px}
 .rep-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
 .rep-box{background:rgba(255,255,255,0.1);padding:8px;border-radius:8px}
@@ -149,24 +151,30 @@ main{max-width:760px;margin:auto;padding:14px}
 .nav-item .nav-pill{padding:3px 16px;border-radius:99px;font-size:18px;transition:0.2s}
 .nav-item.active .nav-pill{background:#dbeafe;color:var(--navy)}
 
-/* INVOICE PREVIEW MODAL (Screenshot Tax Invoice & Annexure Style) */
+/* INVOICE & CONTACT PICKER MODALS */
 .modal{position:fixed;inset:0;background:rgba(15,23,42,0.75);z-index:100;overflow-y:auto;padding:12px}
 .modal-box{background:#fff;max-width:680px;margin:10px auto;border-radius:14px;overflow:hidden;box-shadow:0 15px 35px rgba(0,0,0,0.3)}
 .modal-top{background:var(--navy);color:#fff;padding:12px 16px;display:flex;justify-content:space-between;align-items:center}
-.inv-paper{padding:20px;background:#fff;color:#111;font-size:12px}
+.inv-paper{padding:20px;background:#fff;color:#111;font-size:12px;position:relative;overflow:hidden}
+.inv-watermark{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-18deg);opacity:0.08;pointer-events:none;z-index:0;text-align:center;width:65%}
+.inv-watermark img{max-width:240px;max-height:240px;object-fit:contain}
+.inv-watermark-text{font-size:34px;font-weight:900;color:var(--navy);text-transform:uppercase;letter-spacing:2px}
+.inv-content{position:relative;z-index:1}
 .inv-head{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:2px solid var(--green);padding-bottom:12px;margin-bottom:12px}
+.inv-brand-wrap{display:flex;gap:10px;align-items:center}
+.inv-logo-img{width:48px;height:48px;border-radius:10px;object-fit:cover;border:1px solid #cbd5e1}
 .inv-brand h2{margin:0;color:var(--navy);font-size:18px}
 .inv-brand p{margin:2px 0;font-size:11px;color:#475569;line-height:1.4}
 .inv-tag{text-align:right}
 .inv-tag h3{margin:0;color:var(--green);font-size:16px}
 .inv-tag p{margin:2px 0;font-size:11px}
-.inv-billto{display:flex;justify-content:space-between;margin-bottom:14px;background:#f8fafc;padding:10px;border-radius:8px}
-.inv-table{width:100%;border-collapse:collapse;margin-bottom:12px;font-size:11.5px}
+.inv-billto{display:flex;justify-content:space-between;margin-bottom:14px;background:rgba(248,250,252,0.9);padding:10px;border-radius:8px;border:1px solid #e2e8f0}
+.inv-table{width:100%;border-collapse:collapse;margin-bottom:12px;font-size:11.5px;background:rgba(255,255,255,0.85)}
 .inv-table th{background:var(--green);color:#fff;padding:7px 8px;text-align:left;font-weight:700}
 .inv-table td{border:1px solid #cbd5e1;padding:7px 8px}
 .inv-totals{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-top:10px}
-.inv-words{flex:1;background:#f1f5f9;padding:8px 10px;border-radius:6px;font-size:11px}
-.inv-sum-box{width:220px;border:1px solid #cbd5e1;border-radius:6px;overflow:hidden}
+.inv-words{flex:1;background:rgba(241,245,249,0.9);padding:8px 10px;border-radius:6px;font-size:11px}
+.inv-sum-box{width:230px;border:1px solid #cbd5e1;border-radius:6px;overflow:hidden;background:#fff}
 .inv-sum-row{display:flex;justify-content:space-between;padding:6px 10px;border-bottom:1px solid #e2e8f0;font-size:11.5px}
 .inv-sum-row.green{background:var(--green);color:#fff;font-weight:800}
 .inv-footer{margin-top:24px;display:flex;justify-content:space-between;align-items:flex-end;font-size:11px;color:#475569;border-top:1px dashed #cbd5e1;padding-top:10px}
@@ -184,15 +192,14 @@ main{max-width:760px;margin:auto;padding:14px}
 </style>
 </head>
 <body>
-
 <!-- TOP HEADER -->
 <header class="no-print">
   <div class="header-inner">
-    <div class="brand" onclick="goMainTab('khata')">
-      <div class="logo-circle">TD</div>
+    <div class="brand" onclick="openView('profile')" title="Tap to edit Transport Profile & Logo">
+      <div class="logo-circle" id="hdrLogoCircle">TD</div>
       <div>
-        <h1 class="brand-title">Tamil Dhesam Transport</h1>
-        <p class="brand-sub">TN 13 Z 1647 • Fleet & Khata</p>
+        <h1 class="brand-title" id="hdrCompanyName">Tamil Dhesam Transport</h1>
+        <p class="brand-sub" id="hdrSubText">TN 13 Z 1647 • ⚙️ Edit Profile</p>
       </div>
     </div>
     <div class="header-btns">
@@ -211,7 +218,7 @@ main{max-width:760px;margin:auto;padding:14px}
     <div class="hero-card">
       <div class="hero-top">
         <div>
-          <div class="hero-label">Total Party Balance (பாக்கி)</div>
+          <div class="hero-label">Total Party Balance (வரவேண்டிய பாக்கி)</div>
           <div class="hero-amount" id="dashPending">₹0</div>
         </div>
         <div class="hero-profit">
@@ -241,7 +248,7 @@ main{max-width:760px;margin:auto;padding:14px}
 
     <!-- Party Section -->
     <div class="cat-card">
-      <h3 class="cat-title">Party</h3>
+      <h3 class="cat-title">Party & Billing</h3>
       <div class="cat-grid">
         <div class="cat-item" onclick="openTripsView('pending')">
           <div class="cat-ico">⏳<span class="cat-badge" id="badgeUnpaid">0</span></div>
@@ -249,34 +256,34 @@ main{max-width:760px;margin:auto;padding:14px}
         </div>
         <div class="cat-item" onclick="openTripsView('all')">
           <div class="cat-ico">🧾</div>
-          <span>Digital Invoice</span>
+          <span>PDF Invoice</span>
         </div>
         <div class="cat-item" onclick="openTripsView('pending')">
-          <div class="cat-ico">🔔</div>
-          <span>Collection Reminders</span>
+          <div class="cat-ico">📲</div>
+          <span>WA Reminders</span>
         </div>
       </div>
     </div>
 
-    <!-- Driver, Expenses & More Section -->
+    <!-- Driver, Commission & Expenses Section -->
     <div class="cat-card">
-      <h3 class="cat-title">Driver, Expenses & More</h3>
+      <h3 class="cat-title">Driver, Commission & More</h3>
       <div class="cat-grid cols-4">
-        <div class="cat-item" onclick="openReportPreset('driver')">
+        <div class="cat-item" onclick="openView('drivers')">
           <div class="cat-ico">👨‍✈️</div>
           <span>Driver Khata</span>
         </div>
-        <div class="cat-item" onclick="openReportPreset('vehicle')">
-          <div class="cat-ico">🚛</div>
-          <span>My Trucks</span>
+        <div class="cat-item" onclick="openView('commissions')">
+          <div class="cat-ico">🤝</div>
+          <span>Commission</span>
         </div>
         <div class="cat-item" onclick="openView('reports')">
           <div class="cat-ico">⛽</div>
           <span>Diesel & Exp</span>
         </div>
-        <div class="cat-item" onclick="openView('reports')">
-          <div class="cat-ico">📑</div>
-          <span>Reports</span>
+        <div class="cat-item" onclick="openView('profile')">
+          <div class="cat-ico">⚙️</div>
+          <span>Profile & Logo</span>
         </div>
       </div>
     </div>
@@ -292,7 +299,7 @@ main{max-width:760px;margin:auto;padding:14px}
       <button class="pill-btn gold" onclick="openAddTrip()">+ Add Trip</button>
     </div>
 
-    <input type="text" id="tripSearch" class="search-input" placeholder="🔍 Search Party, Vehicle No, Route, LRN..." oninput="renderTripsList()">
+    <input type="text" id="tripSearch" class="search-input" placeholder="🔍 Search Party, Transport, Vehicle No, Route, LRN..." oninput="renderTripsList()">
     <div id="tripsListContainer"></div>
   </section>
 
@@ -312,6 +319,7 @@ main{max-width:760px;margin:auto;padding:14px}
         <datalist id="vehicleList"></datalist>
         <datalist id="driverList"></datalist>
         <datalist id="customerList"></datalist>
+        <datalist id="brokerList"></datalist>
 
         <div class="grid-2">
           <div class="field">
@@ -335,98 +343,146 @@ main{max-width:760px;margin:auto;padding:14px}
           </div>
         </div>
 
+        <div class="field">
+          <label>Route (From - To) *</label>
+          <input type="text" id="route" placeholder="Ex: Chennai to Pune" required>
+        </div>
+
+        <div class="sec-lbl">1. Customer & Transport Details (Optional Fields)</div>
         <div class="grid-2">
           <div class="field">
             <label>Party / Customer பெயர் *</label>
             <input type="text" id="customerName" list="customerList" placeholder="Customer / Company Name" required>
           </div>
           <div class="field">
-            <label>Customer போன் *</label>
-            <input type="tel" id="customerPhone" placeholder="9876543210" required>
-          </div>
-        </div>
-
-        <div class="field">
-          <label>Route (From - To) *</label>
-          <input type="text" id="route" placeholder="Ex: Chennai to Pune" required>
-        </div>
-
-        <div class="sec-lbl">1. KM & Mileage</div>
-        <div class="grid-3">
-          <div class="field">
-            <label>Start KM *</label>
-            <input type="number" id="startKm" step="0.1" placeholder="0" oninput="calcValues()" required>
-          </div>
-          <div class="field">
-            <label>End KM *</label>
-            <input type="number" id="endKm" step="0.1" placeholder="0" oninput="calcValues()" required>
-          </div>
-          <div class="field">
-            <label>Total KM</label>
-            <input type="text" id="totalKm" class="auto-box" readonly value="0">
-          </div>
-        </div>
-
-        <div class="grid-3">
-          <div class="field">
-            <label>Diesel (Liters) *</label>
-            <input type="number" id="dieselLiters" step="0.01" placeholder="0" oninput="calcValues()" required>
-          </div>
-          <div class="field">
-            <label>1L விலை (₹)</label>
-            <input type="number" id="dieselRate" step="0.01" value="94" oninput="calcValues()">
-          </div>
-          <div class="field">
-            <label>Mileage (KM/L)</label>
-            <input type="text" id="mileage" class="auto-box" readonly value="0.00">
-          </div>
-        </div>
-
-        <div class="sec-lbl">2. Trip Expenses (செலவுகள்)</div>
-        <div class="grid-3">
-          <div class="field">
-            <label>Diesel Cost (₹)</label>
-            <input type="number" id="dieselCost" class="auto-box" readonly value="0">
-          </div>
-          <div class="field">
-            <label>Driver Batta (₹)</label>
-            <input type="number" id="driverBatta" placeholder="0" oninput="calcValues()">
-          </div>
-            <div class="field">
-            <label>Toll / Unloading (₹)</label>
-            <input type="number" id="tollExpense" placeholder="0" oninput="calcValues()">
-          </div>
-        </div>
-
-        <div class="sec-lbl">3. Freight & Payment (வாடகை & வரவு)</div>
-        <div class="grid-3">
-          <div class="field">
-            <label>Freight Amount (₹) *</label>
-            <input type="number" id="totalAmount" placeholder="0" oninput="calcValues()" required>
-          </div>
-          <div class="field">
-            <label>Advance / Recd (₹) *</label>
-            <input type="number" id="receivedAmount" placeholder="0" oninput="calcValues()" required>
-          </div>
-          <div class="field">
-            <label>Balance Due (₹)</label>
-            <input type="number" id="pendingBalance" class="auto-box" readonly value="0">
+            <label>1. Customer Mobile (Optional)</label>
+            <input type="tel" id="customerPhone" placeholder="Party Phone No">
           </div>
         </div>
 
         <div class="grid-2">
           <div class="field">
+            <label>Transport / Broker பெயர் (Optional)</label>
+            <input type="text" id="brokerName" list="brokerList" placeholder="Ex: Raghavendra Transport">
+          </div>
+          <div class="field">
+            <label>2. Transport Mobile (Optional)</label>
+            <input type="tel" id="transportPhone" placeholder="Transport / Broker No">
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="field">
+            <label>Customer Address (For Invoice - Optional)</label>
+            <input type="text" id="customerAddress" placeholder="Street, City, State, PIN">
+          </div>
+          <div class="field">
+            <label>Customer GST No (For Invoice - Optional)</label>
+            <input type="text" id="customerGst" placeholder="Ex: 33AABCU9603R1ZM" style="text-transform:uppercase">
+          </div>
+        </div>
+
+        <div class="sec-lbl">2. KM & Diesel (Direct Entry Supported)</div>
+        <div class="grid-3">
+          <div class="field">
+            <label>Start KM (Opt)</label>
+            <input type="number" id="startKm" step="0.1" placeholder="Optional" oninput="handleKmInput()">
+          </div>
+          <div class="field">
+            <label>End KM (Opt)</label>
+            <input type="number" id="endKm" step="0.1" placeholder="Optional" oninput="handleKmInput()">
+          </div>
+          <div class="field">
+            <label>Total KM *</label>
+            <input type="number" id="totalKm" step="0.1" placeholder="Direct KM" oninput="calcValues()">
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="field">
+            <label>Diesel Liters (Opt)</label>
+            <input type="number" id="dieselLiters" step="0.01" placeholder="Optional" oninput="handleDieselInput()">
+          </div>
+          <div class="field">
+            <label>1L விலை (₹) (Opt)</label>
+            <input type="number" id="dieselRate" step="0.01" value="94" oninput="handleDieselInput()">
+          </div>
+          <div class="field">
+            <label>Total Diesel Cost (₹)</label>
+            <input type="number" id="dieselCost" placeholder="Direct ₹" oninput="calcValues()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Calculated Mileage (KM/L)</label>
+          <input type="text" id="mileage" class="auto-box" readonly value="0.00">
+        </div>
+
+        <div class="sec-lbl">3. Freight, Commission & Driver Batta (16% Auto)</div>
+        <div class="grid-2">
+          <div class="field">
+            <label>Total Freight / வாடகை (₹) *</label>
+            <input type="number" id="totalAmount" placeholder="0" oninput="handleFreightChange()" required>
+          </div>
+          <div class="field">
+            <label>Transport / Broker Commission (₹)</label>
+            <input type="number" id="commissionAmount" placeholder="0" oninput="calcValues()">
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="field">
+            <label>Net Receivable Rent (வாடகை - கமிஷன்)</label>
+            <input type="number" id="netReceivable" class="auto-box" readonly value="0">
+          </div>
+          <div class="field">
+            <label>Received from Party/Trans (₹) *</label>
+            <input type="number" id="receivedAmount" placeholder="0" oninput="calcValues()" required>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="field">
+            <label>Driver Salary / Batta (16% Auto ₹)</label>
+            <input type="number" id="driverBatta" placeholder="0" oninput="calcValues()">
+            <div class="hint-txt">மொத்த வாடகையில் 16% தானாகக் கணக்கிடப்படும்</div>
+          </div>
+          <div class="field">
+            <label>Driver Advance Paid (டிரைவர் அட்வான்ஸ் ₹)</label>
+            <input type="number" id="driverAdvance" placeholder="0" oninput="calcValues()">
+            <div class="hint-txt">இந்த ட்ரிப்பில் டிரைவருக்குக் கொடுத்த அட்வான்ஸ்</div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="field">
+            <label>Toll / Unloading (₹)</label>
+            <input type="number" id="tollExpense" placeholder="0" oninput="calcValues()">
+          </div>
+          <div class="field">
+            <label>Permit & RTO Expenses (₹)</label>
+            <input type="number" id="permitRtoExpense" placeholder="0" oninput="calcValues()">
+          </div>
+        </div>
+
+        <div class="sec-lbl">4. Final Balance & Net Profit</div>
+        <div class="grid-2">
+          <div class="field">
+            <label>Party Balance Due (பாக்கி ₹)</label>
+            <input type="number" id="pendingBalance" class="auto-box" readonly value="0">
+          </div>
+          <div class="field">
             <label>Net Profit (நிகர லாபம் ₹)</label>
             <input type="number" id="netProfit" class="profit-box" readonly value="0">
           </div>
-          <div class="field">
-            <label>Delivery Status</label>
-            <select id="courierStatus">
-              <option value="In Transit">🚚 In Transit</option>
-              <option value="Delivered">✅ Settled / Delivered</option>
-              <option value="Pending">⏳ POD / Payment Due</option>
-            </select>
-          </div>
+        </div>
+
+        <div class="field">
+          <label>Trip / Delivery Status</label>
+          <select id="courierStatus">
+            <option value="In Transit">🚚 In Transit</option>
+            <option value="Delivered">✅ Settled / Delivered</option>
+            <option value="Pending">⏳ POD / Payment Due</option>
+          </select>
         </div>
 
         <div class="btn-row">
@@ -436,8 +492,142 @@ main{max-width:760px;margin:auto;padding:14px}
       </form>
     </div>
   </section>
+  <!-- ==================== 4. DRIVER KHATA & SALARY LEDGER ==================== -->
+  <section id="view-drivers" class="hidden">
+    <div class="sub-header">
+      <div class="back-title">
+        <button class="back-btn" onclick="goMainTab('khata')">←</button>
+        <h2>Driver Salary & Advance</h2>
+      </div>
+    </div>
 
-  <!-- ==================== 4. TOOLS TAB ==================== -->
+    <div class="card">
+      <div class="field" style="margin-bottom:0">
+        <label>டிரைவர் பெயரை செலக்ட் பண்ணுங்க (Select Driver)</label>
+        <select id="driverLedgerSelect" onchange="renderDriverLedger()"></select>
+      </div>
+    </div>
+
+    <div class="rep-banner">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <strong id="drvBannerTitle" style="color:var(--gold)">All Drivers Summary</strong>
+        <span style="font-size:12px" id="drvTripCount">0 Trips</span>
+      </div>
+      <div class="rep-grid">
+        <div class="rep-box"><span>Total Salary (16%)</span><strong id="drvTotSal">₹0</strong></div>
+        <div class="rep-box"><span>Total Paid / Adv</span><strong id="drvTotPaid" style="color:#86efac">₹0</strong></div>
+        <div class="rep-box"><span>Pending Salary</span><strong id="drvTotDue" style="color:#fca5a5">₹0</strong></div>
+      </div>
+    </div>
+
+    <!-- Extra Direct Salary / Advance Payment Box -->
+    <div class="card">
+      <h3 style="margin:0 0 8px;font-size:14px;color:var(--navy)">➕ தனிப்பட்ட சம்பளம் / அட்வான்ஸ் என்ட்ரி (Direct Payment)</h3>
+      <p style="font-size:11px;color:var(--muted);margin:0 0 10px">ட்ரிப் இல்லாத நேரத்தில் டிரைவருக்கு மொத்தமாக சம்பளம் அல்லது அட்வான்ஸ் கொடுத்தால் இங்கே என்ட்ரி செய்யலாம்.</p>
+      <div class="grid-3">
+        <div class="field"><label>Date</label><input type="date" id="drvPayDate"></div>
+        <div class="field"><label>Driver Name</label><input type="text" id="drvPayName" list="driverList" placeholder="Driver"></div>
+        <div class="field"><label>Amount Paid (₹)</label><input type="number" id="drvPayAmt" placeholder="0"></div>
+      </div>
+      <div class="grid-2">
+        <div class="field"><label>Note (குறிப்பு)</label><input type="text" id="drvPayNote" placeholder="Ex: Monthly Salary Settlement"></div>
+        <div class="field" style="display:flex;align-items:flex-end">
+          <button type="button" class="btn btn-green" style="padding:10px;font-size:13px" onclick="addDriverDirectPayment()">💾 Add Payment</button>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-size:14px;margin:12px 0 8px">Trip-wise Salary & Advance Details</h3>
+    <div id="driverLedgerList"></div>
+  </section>
+
+  <!-- ==================== 5. COMMISSION LEDGER VIEW ==================== -->
+  <section id="view-commissions" class="hidden">
+    <div class="sub-header">
+      <div class="back-title">
+        <button class="back-btn" onclick="goMainTab('khata')">←</button>
+        <h2>Commission Report</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="field" style="margin-bottom:0">
+        <label>Transport / Broker Filter</label>
+        <select id="commBrokerSelect" onchange="renderCommissionLedger()">
+          <option value="all">All Transports / Brokers</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="rep-banner">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <strong style="color:var(--gold)">Total Commission Paid</strong>
+        <span style="font-size:12px" id="commTripCount">0 Trips</span>
+      </div>
+      <div class="rep-grid">
+        <div class="rep-box"><span>Gross Rent</span><strong id="commGross">₹0</strong></div>
+        <div class="rep-box"><span>Total Commission</span><strong id="commTotal" style="color:#fca5a5">₹0</strong></div>
+        <div class="rep-box"><span>Net Rent Received</span><strong id="commNet" style="color:#86efac">₹0</strong></div>
+      </div>
+    </div>
+
+    <div id="commissionListContainer"></div>
+  </section>
+
+  <!-- ==================== 6. EDITABLE TRANSPORT PROFILE & LOGO ==================== -->
+  <section id="view-profile" class="hidden">
+    <div class="sub-header">
+      <div class="back-title">
+        <button class="back-btn" onclick="goMainTab('khata')">←</button>
+        <h2>Transport Profile & Logo</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <p style="font-size:12px;color:var(--muted);margin-top:0">இங்கே மாற்றும் பெயர், முகவரி மற்றும் லோகோ உங்கள் ஆப் முகப்பிலும், PDF இன்வாய்ஸ் பில்லிலும் (Watermark உட்பட) தானாக அப்டேட் ஆகும்.</p>
+      
+      <div class="field">
+        <label>Transport / Company Name *</label>
+        <input type="text" id="profName" placeholder="Tamil Dhesam Transport">
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>Default Truck Number</label>
+          <input type="text" id="profVehicle" placeholder="TN 13 Z 1647" style="text-transform:uppercase">
+        </div>
+        <div class="field">
+          <label>Default Driver Name</label>
+          <input type="text" id="profDriver" placeholder="Munish">
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>Owner / Office Phone</label>
+          <input type="tel" id="profPhone" placeholder="+91 7401334842">
+        </div>
+        <div class="field">
+          <label>Your GST Number (Optional)</label>
+          <input type="text" id="profGst" placeholder="Optional" style="text-transform:uppercase">
+        </div>
+      </div>
+      <div class="field">
+        <label>Office Address (For Invoice Header)</label>
+        <textarea id="profAddress" rows="2" placeholder="Melapudi Village, Pallipet Taluk, Thiruvallur Dist., Tamil Nadu - 631207"></textarea>
+      </div>
+      <div class="field">
+        <label>Upload Transport Logo (For App & PDF Invoice Watermark)</label>
+        <input type="file" id="profLogoInput" accept="image/*" onchange="handleLogoUpload(event)">
+        <div id="profLogoPreviewBox" style="margin-top:8px;display:flex;align-items:center;gap:10px"></div>
+      </div>
+
+      <div class="btn-row">
+        <button type="button" class="btn btn-navy" onclick="saveProfile()">💾 Save Profile & Logo</button>
+        <button type="button" class="btn btn-light" onclick="removeLogo()">Remove Logo</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 7. TOOLS TAB ==================== -->
   <section id="view-tools" class="hidden">
     <h2 style="margin:0 0 12px;font-size:17px">Transport Tools</h2>
     <div class="tools-grid">
@@ -459,7 +649,7 @@ main{max-width:760px;margin:auto;padding:14px}
       <div class="tool-card" onclick="shareBusinessCard()">
         <div class="tool-ico">🪪</div>
         <h4>Business Card</h4>
-        <p>Share Tamil Dhesam info</p>
+        <p>Share Transport info on WA</p>
       </div>
     </div>
 
@@ -472,11 +662,12 @@ main{max-width:760px;margin:auto;padding:14px}
       </div>
       <div class="grid-2">
         <div class="field"><label>Diesel Price (₹/L)</label><input type="number" id="tcRate" value="94" oninput="runQuickCalc()"></div>
-        <div class="field"><label>Toll + Batta + Misc (₹)</label><input type="number" id="tcMisc" placeholder="2500" oninput="runQuickCalc()"></div>
+        <div class="field"><label>Toll + Permit + Misc (₹)</label><input type="number" id="tcMisc" placeholder="1500" oninput="runQuickCalc()"></div>
       </div>
       <div class="field"><label>Quote Freight to Customer (₹)</label><input type="number" id="tcQuote" placeholder="14000" oninput="runQuickCalc()"></div>
       <div style="background:#f8fafc;padding:12px;border-radius:10px;border:1px solid var(--line);font-size:13px">
         <div style="display:flex;justify-content:space-between;margin-bottom:4px"><span>Est. Diesel Needed:</span><strong id="tcResLiters">0 L (₹0)</strong></div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:4px"><span>Driver Salary (16%):</span><strong id="tcResDrv">₹0</strong></div>
         <div style="display:flex;justify-content:space-between;margin-bottom:4px"><span>Total Trip Cost:</span><strong id="tcResCost" style="color:var(--red)">₹0</strong></div>
         <div style="display:flex;justify-content:space-between;font-size:15px;border-top:1px dashed var(--line);padding-top:6px"><span>Estimated Profit:</span><strong id="tcResProfit" style="color:var(--green)">₹0</strong></div>
       </div>
@@ -484,7 +675,7 @@ main{max-width:760px;margin:auto;padding:14px}
 
     <!-- Truck Documents & Reminders Box -->
     <div id="docTool" class="card hidden" style="margin-top:14px">
-      <h3 style="margin:0 0 10px;font-size:15px">📁 TN 13 Z 1647 - Document Reminders</h3>
+      <h3 style="margin:0 0 10px;font-size:15px">📁 Truck Document Reminders</h3>
       <div class="grid-2">
         <div class="field"><label>Fitness Certificate (FC) Expiry</label><input type="date" id="docFC" onchange="saveDocs()"></div>
         <div class="field"><label>Insurance Expiry</label><input type="date" id="docIns" onchange="saveDocs()"></div>
@@ -497,7 +688,7 @@ main{max-width:760px;margin:auto;padding:14px}
     </div>
   </section>
 
-  <!-- ==================== 5. DIRECTORY (PARTY KHATA) ==================== -->
+  <!-- ==================== 8. DIRECTORY (PARTY KHATA) ==================== -->
   <section id="view-directory" class="hidden">
     <div class="sub-header">
       <h2>Parties / Customers</h2>
@@ -507,7 +698,7 @@ main{max-width:760px;margin:auto;padding:14px}
     <div id="directoryList"></div>
   </section>
 
-  <!-- ==================== 6. REPORTS & FILTER VIEW ==================== -->
+  <!-- ==================== 9. REPORTS & FILTER VIEW ==================== -->
   <section id="view-reports" class="hidden">
     <div class="sub-header">
       <div class="back-title">
@@ -524,6 +715,7 @@ main{max-width:760px;margin:auto;padding:14px}
           <select id="filterCategory" onchange="populateFilterValues()">
             <option value="all">All Records</option>
             <option value="customer">👤 Party / Customer</option>
+            <option value="broker">🤝 Transport / Broker</option>
             <option value="vehicle">🚛 Truck Number</option>
             <option value="driver">👨‍✈️ Driver Name</option>
           </select>
@@ -563,11 +755,11 @@ main{max-width:760px;margin:auto;padding:14px}
         <span style="font-size:12px" id="repTripsCount">0 Trips</span>
       </div>
       <div class="rep-grid">
-        <div class="rep-box"><span>Total Freight</span><strong id="repTotal">₹0</strong></div>
+        <div class="rep-box"><span>Net Freight</span><strong id="repTotal">₹0</strong></div>
         <div class="rep-box"><span>Received</span><strong id="repRec" style="color:#86efac">₹0</strong></div>
         <div class="rep-box"><span>Balance Due</span><strong id="repPen" style="color:#fca5a5">₹0</strong></div>
         <div class="rep-box"><span>Total KM</span><strong id="repKm">0 km</strong></div>
-        <div class="rep-box"><span>Diesel + Exp</span><strong id="repExp">₹0</strong></div>
+        <div class="rep-box"><span>All Expenses</span><strong id="repExp">₹0</strong></div>
         <div class="rep-box"><span>Net Profit</span><strong id="repProfit" style="color:var(--gold)">₹0</strong></div>
       </div>
     </div>
@@ -597,29 +789,51 @@ main{max-width:760px;margin:auto;padding:14px}
 <div id="invoiceModal" class="modal hidden">
   <div class="modal-box">
     <div class="modal-top no-print">
-      <strong>Invoice Preview</strong>
+      <strong>PDF Invoice Preview</strong>
       <button onclick="closeInvoice()" style="background:none;border:none;color:#fff;font-size:20px;cursor:pointer">✕</button>
     </div>
 
     <div class="inv-paper" id="invoicePaper"></div>
 
-    <div class="modal-actions no-print">
-      <button class="btn btn-blue" onclick="window.print()">🖨️ Save PDF / Print</button>
-      <button class="btn btn-green" id="invWaBtn">📲 Share WhatsApp</button>
-    </div>
+    <div class="modal-actions no-print" id="invoiceModalActions"></div>
   </div>
 </div>
 
+<!-- DUAL CONTACT PICKER MODAL (WHATSAPP / CALL) -->
+<div id="contactModal" class="modal hidden">
+  <div class="modal-box" style="max-width:420px;margin-top:15vh">
+    <div class="modal-top">
+      <strong id="contactModalTitle">Select Contact</strong>
+      <button onclick="closeContactModal()" style="background:none;border:none;color:#fff;font-size:20px;cursor:pointer">✕</button>
+    </div>
+    <div style="padding:16px" id="contactModalBody"></div>
+  </div>
+</div>
 <script>
+// ==================== DATA & PROFILE INITIALIZATION ====================
 let trips = JSON.parse(localStorage.getItem('td_transport_trips_v3')) || [];
+let driverPayments = JSON.parse(localStorage.getItem('td_driver_payments_v1')) || [];
+let profile = JSON.parse(localStorage.getItem('td_transport_profile_v1')) || {
+  companyName: 'Tamil Dhesam Transport',
+  defaultVehicle: 'TN 13 Z 1647',
+  defaultDriver: 'Munish',
+  phone: '+91 7401334842',
+  gst: '',
+  address: 'Melapudi Village, Pallipet Taluk, Thiruvallur Dist., Tamil Nadu - 631207',
+  logo: ''
+};
+
 let currentTripFilterMode = 'all';
 let currentReportTrips = [];
 
 document.getElementById('tripDate').valueAsDate = new Date();
+document.getElementById('drvPayDate').valueAsDate = new Date();
+applyProfileUI();
 loadDocs();
 
+// ==================== NAVIGATION ====================
 function hideAllViews() {
-  ['view-khata','view-trips','view-form','view-tools','view-directory','view-reports'].forEach(id => {
+  ['view-khata','view-trips','view-form','view-drivers','view-commissions','view-profile','view-tools','view-directory','view-reports'].forEach(id => {
     document.getElementById(id).classList.add('hidden');
   });
 }
@@ -644,9 +858,10 @@ function goMainTab(tab) {
 function openView(viewName) {
   hideAllViews();
   document.getElementById('view-' + viewName).classList.remove('hidden');
-  if (viewName === 'reports') {
-    populateFilterValues();
-  }
+  if (viewName === 'reports') populateFilterValues();
+  if (viewName === 'drivers') initDriverLedger();
+  if (viewName === 'commissions') initCommissionLedger();
+  if (viewName === 'profile') loadProfileForm();
 }
 
 function openTripsView(mode) {
@@ -662,31 +877,121 @@ function openAddTrip() {
   openView('form');
 }
 
-function openReportPreset(cat) {
-  openView('reports');
-  document.getElementById('filterCategory').value = cat;
-  populateFilterValues();
+// ==================== PROFILE & LOGO MANAGEMENT ====================
+function applyProfileUI() {
+  document.getElementById('hdrCompanyName').innerText = profile.companyName || 'Tamil Dhesam Transport';
+  document.getElementById('hdrSubText').innerText = `${profile.defaultVehicle || 'TN 13 Z 1647'} • ⚙️ Edit Profile`;
+  const logoDiv = document.getElementById('hdrLogoCircle');
+  if (profile.logo) {
+    logoDiv.innerHTML = `<img src="${profile.logo}" alt="Logo">`;
+  } else {
+    const initials = (profile.companyName || 'TD').split(' ').map(w => w[0]).join('').substring(0,2).toUpperCase();
+    logoDiv.innerText = initials || 'TD';
+  }
+}
+
+function loadProfileForm() {
+  document.getElementById('profName').value = profile.companyName || '';
+  document.getElementById('profVehicle').value = profile.defaultVehicle || '';
+  document.getElementById('profDriver').value = profile.defaultDriver || '';
+  document.getElementById('profPhone').value = profile.phone || '';
+  document.getElementById('profGst').value = profile.gst || '';
+  document.getElementById('profAddress').value = profile.address || '';
+  renderLogoPreview();
+}
+
+function handleLogoUpload(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const img = new Image();
+    img.onload = function() {
+      const canvas = document.createElement('canvas');
+      const maxDim = 240;
+      let w = img.width, h = img.height;
+      if (w > h && w > maxDim) { h *= maxDim / w; w = maxDim; }
+      else if (h > maxDim) { w *= maxDim / h; h = maxDim; }
+      canvas.width = w; canvas.height = h;
+      canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+      profile.logo = canvas.toDataURL('image/png', 0.85);
+      renderLogoPreview();
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function renderLogoPreview() {
+  const box = document.getElementById('profLogoPreviewBox');
+  if (profile.logo) {
+    box.innerHTML = `<img src="${profile.logo}" style="width:54px;height:54px;border-radius:10px;object-fit:cover;border:1px solid var(--line)"><span style="font-size:12px;color:var(--green);font-weight:700">✅ Logo Ready for App & Invoice Watermark</span>`;
+  } else {
+    box.innerHTML = `<span style="font-size:11.5px;color:var(--muted)">No custom logo uploaded (Company Name will be used as watermark).</span>`;
+  }
+}
+
+function removeLogo() {
+  profile.logo = '';
+  renderLogoPreview();
+}
+
+function saveProfile() {
+  profile.companyName = document.getElementById('profName').value.trim() || 'Tamil Dhesam Transport';
+  profile.defaultVehicle = document.getElementById('profVehicle').value.trim().toUpperCase() || 'TN 13 Z 1647';
+  profile.defaultDriver = document.getElementById('profDriver').value.trim() || 'Munish';
+  profile.phone = document.getElementById('profPhone').value.trim();
+  profile.gst = document.getElementById('profGst').value.trim().toUpperCase();
+  profile.address = document.getElementById('profAddress').value.trim();
+  localStorage.setItem('td_transport_profile_v1', JSON.stringify(profile));
+  applyProfileUI();
+  alert('Profile & Logo saved successfully!');
+  goMainTab('khata');
+}
+
+// ==================== TRIP CALCULATIONS ====================
+function handleKmInput() {
+  const sKm = parseFloat(document.getElementById('startKm').value) || 0;
+  const eKm = parseFloat(document.getElementById('endKm').value) || 0;
+  if (eKm > sKm) {
+    document.getElementById('totalKm').value = (eKm - sKm).toFixed(1);
+  }
+  calcValues();
+}
+
+function handleDieselInput() {
+  const liters = parseFloat(document.getElementById('dieselLiters').value) || 0;
+  const rate = parseFloat(document.getElementById('dieselRate').value) || 0;
+  if (liters > 0 && rate > 0) {
+    document.getElementById('dieselCost').value = Math.round(liters * rate);
+  }
+  calcValues();
+}
+
+function handleFreightChange() {
+  const total = parseFloat(document.getElementById('totalAmount').value) || 0;
+  document.getElementById('driverBatta').value = Math.round(total * 0.16);
+  calcValues();
 }
 
 function calcValues() {
-  const sKm = parseFloat(document.getElementById('startKm').value) || 0;
-  const eKm = parseFloat(document.getElementById('endKm').value) || 0;
+  const tKm = parseFloat(document.getElementById('totalKm').value) || 0;
   const liters = parseFloat(document.getElementById('dieselLiters').value) || 0;
-  const rate = parseFloat(document.getElementById('dieselRate').value) || 0;
+  const dCost = parseFloat(document.getElementById('dieselCost').value) || 0;
   const batta = parseFloat(document.getElementById('driverBatta').value) || 0;
   const toll = parseFloat(document.getElementById('tollExpense').value) || 0;
+  const permitRto = parseFloat(document.getElementById('permitRtoExpense').value) || 0;
   const total = parseFloat(document.getElementById('totalAmount').value) || 0;
+  const comm = parseFloat(document.getElementById('commissionAmount').value) || 0;
   const rec = parseFloat(document.getElementById('receivedAmount').value) || 0;
 
-  const tKm = eKm > sKm ? (eKm - sKm) : 0;
   const mil = (tKm > 0 && liters > 0) ? (tKm / liters) : 0;
-  const dCost = Math.round(liters * rate);
-  const pending = total - rec;
-  const profit = total - (dCost + batta + toll);
+  const netReceivable = total - comm;
+  const pending = netReceivable - rec;
+  const profit = netReceivable - (dCost + batta + toll + permitRto);
 
-  document.getElementById('totalKm').value = tKm.toFixed(1);
   document.getElementById('mileage').value = mil.toFixed(2);
-  document.getElementById('dieselCost').value = dCost;
+  document.getElementById('netReceivable').value = netReceivable;
   document.getElementById('pendingBalance').value = pending;
   document.getElementById('netProfit').value = profit;
 }
@@ -700,11 +1005,15 @@ document.getElementById('tripForm').addEventListener('submit', function(e) {
     id: editIdx >= 0 ? trips[editIdx].id : Date.now(),
     lrNumber: document.getElementById('lrNumber').value.trim() || ('LRN-' + (101 + trips.length)),
     tripDate: document.getElementById('tripDate').value,
-    transportName: 'Tamil Dhesam Transport',
+    transportName: profile.companyName || 'Tamil Dhesam Transport',
     vehicleNumber: document.getElementById('vehicleNumber').value.trim().toUpperCase(),
     driverName: document.getElementById('driverName').value.trim(),
     customerName: document.getElementById('customerName').value.trim(),
     customerPhone: document.getElementById('customerPhone').value.trim(),
+    brokerName: document.getElementById('brokerName').value.trim(),
+    transportPhone: document.getElementById('transportPhone').value.trim(),
+    customerAddress: document.getElementById('customerAddress').value.trim(),
+    customerGst: document.getElementById('customerGst').value.trim().toUpperCase(),
     route: document.getElementById('route').value.trim(),
     startKm: parseFloat(document.getElementById('startKm').value) || 0,
     endKm: parseFloat(document.getElementById('endKm').value) || 0,
@@ -714,8 +1023,12 @@ document.getElementById('tripForm').addEventListener('submit', function(e) {
     mileage: parseFloat(document.getElementById('mileage').value) || 0,
     dieselCost: parseFloat(document.getElementById('dieselCost').value) || 0,
     driverBatta: parseFloat(document.getElementById('driverBatta').value) || 0,
+    driverAdvance: parseFloat(document.getElementById('driverAdvance').value) || 0,
     tollExpense: parseFloat(document.getElementById('tollExpense').value) || 0,
+    permitRtoExpense: parseFloat(document.getElementById('permitRtoExpense').value) || 0,
     totalAmount: parseFloat(document.getElementById('totalAmount').value) || 0,
+    commissionAmount: parseFloat(document.getElementById('commissionAmount').value) || 0,
+    netReceivable: parseFloat(document.getElementById('netReceivable').value) || 0,
     receivedAmount: parseFloat(document.getElementById('receivedAmount').value) || 0,
     pendingBalance: parseFloat(document.getElementById('pendingBalance').value) || 0,
     netProfit: parseFloat(document.getElementById('netProfit').value) || 0,
@@ -735,6 +1048,7 @@ document.getElementById('tripForm').addEventListener('submit', function(e) {
 
 function saveData() {
   localStorage.setItem('td_transport_trips_v3', JSON.stringify(trips));
+  localStorage.setItem('td_driver_payments_v1', JSON.stringify(driverPayments));
   updateDashboard();
   updateDatalists();
 }
@@ -743,8 +1057,8 @@ function resetForm() {
   document.getElementById('tripForm').reset();
   document.getElementById('editIndex').value = '-1';
   document.getElementById('tripDate').valueAsDate = new Date();
-  document.getElementById('vehicleNumber').value = 'TN 13 Z 1647';
-  document.getElementById('driverName').value = 'Munish';
+  document.getElementById('vehicleNumber').value = profile.defaultVehicle || 'TN 13 Z 1647';
+  document.getElementById('driverName').value = profile.defaultDriver || 'Munish';
   document.getElementById('dieselRate').value = '94';
   document.getElementById('formHeading').innerText = 'New Trip Entry';
   document.getElementById('editModeTag').classList.add('hidden');
@@ -759,17 +1073,26 @@ function editTrip(index) {
   document.getElementById('vehicleNumber').value = t.vehicleNumber;
   document.getElementById('driverName').value = t.driverName;
   document.getElementById('customerName').value = t.customerName;
-  document.getElementById('customerPhone').value = t.customerPhone;
+  document.getElementById('customerPhone').value = t.customerPhone || '';
+  document.getElementById('brokerName').value = t.brokerName || '';
+  document.getElementById('transportPhone').value = t.transportPhone || '';
+  document.getElementById('customerAddress').value = t.customerAddress || '';
+  document.getElementById('customerGst').value = t.customerGst || '';
   document.getElementById('route').value = t.route;
-  document.getElementById('startKm').value = t.startKm;
-  document.getElementById('endKm').value = t.endKm;
-  document.getElementById('dieselLiters').value = t.dieselLiters;
-  document.getElementById('dieselRate').value = t.dieselRate;
-  document.getElementById('driverBatta').value = t.driverBatta;
-  document.getElementById('tollExpense').value = t.tollExpense;
-  document.getElementById('totalAmount').value = t.totalAmount;
-  document.getElementById('receivedAmount').value = t.receivedAmount;
-  document.getElementById('courierStatus').value = t.courierStatus;
+  document.getElementById('startKm').value = t.startKm || '';
+  document.getElementById('endKm').value = t.endKm || '';
+  document.getElementById('totalKm').value = t.totalKm || '';
+  document.getElementById('dieselLiters').value = t.dieselLiters || '';
+  document.getElementById('dieselRate').value = t.dieselRate || 94;
+  document.getElementById('dieselCost').value = t.dieselCost || '';
+  document.getElementById('driverBatta').value = t.driverBatta || 0;
+  document.getElementById('driverAdvance').value = t.driverAdvance || 0;
+  document.getElementById('tollExpense').value = t.tollExpense || 0;
+  document.getElementById('permitRtoExpense').value = t.permitRtoExpense || 0;
+  document.getElementById('totalAmount').value = t.totalAmount || 0;
+  document.getElementById('commissionAmount').value = t.commissionAmount || 0;
+  document.getElementById('receivedAmount').value = t.receivedAmount || 0;
+  document.getElementById('courierStatus').value = t.courierStatus || 'In Transit';
 
   calcValues();
   document.getElementById('formHeading').innerText = 'Edit Trip';
@@ -778,8 +1101,9 @@ function editTrip(index) {
 }
 
 function markPaid(index) {
-  if (confirm('Full payment received-ah mark pannava?')) {
-    trips[index].receivedAmount = trips[index].totalAmount;
+  if (confirm('Full net payment received-ah mark pannava?')) {
+    const net = Number(trips[index].totalAmount || 0) - Number(trips[index].commissionAmount || 0);
+    trips[index].receivedAmount = net;
     trips[index].pendingBalance = 0;
     trips[index].courierStatus = 'Delivered';
     saveData();
@@ -816,7 +1140,7 @@ function renderTripsList() {
 
   const filtered = trips.map((t, idx) => ({...t, origIdx: idx})).filter(t => {
     if (currentTripFilterMode === 'pending' && Number(t.pendingBalance) <= 0) return false;
-    return (t.customerName + ' ' + t.vehicleNumber + ' ' + t.route + ' ' + (t.lrNumber||'')).toLowerCase().includes(q);
+    return (t.customerName + ' ' + (t.brokerName||'') + ' ' + t.vehicleNumber + ' ' + t.route + ' ' + (t.lrNumber||'')).toLowerCase().includes(q);
   });
 
   if (filtered.length === 0) {
@@ -827,30 +1151,33 @@ function renderTripsList() {
   filtered.forEach(t => {
     const isDue = Number(t.pendingBalance) > 0;
     const dotClass = isDue ? 'dot-red' : (t.courierStatus === 'In Transit' ? 'dot-orange' : 'dot-green');
-    const statusText = isDue ? `Due: ₹${t.pendingBalance}` : (t.courierStatus === 'In Transit' ? 'In Transit' : 'Settled');
+    const statusText = isDue ? `Due: ₹${Number(t.pendingBalance).toLocaleString('en-IN')}` : (t.courierStatus === 'In Transit' ? 'In Transit' : 'Settled');
+    const commBadge = Number(t.commissionAmount) > 0 ? ` • Comm: ₹${t.commissionAmount}` : '';
+    const brokerTag = t.brokerName ? ` <span style="font-size:11px;color:var(--muted)">(${t.brokerName})</span>` : '';
 
     container.innerHTML += `
       <div class="trip-card">
         <div class="tc-top">
           <div>
-            <div class="tc-party">${t.customerName}</div>
-            <div class="tc-veh">${t.vehicleNumber}</div>
+            <div class="tc-party">${t.customerName}${brokerTag}</div>
+            <div class="tc-veh">${t.vehicleNumber} • 👨‍✈️ ${t.driverName}</div>
           </div>
           <div class="tc-amt-pill ${isDue ? 'due' : ''}">₹${Number(t.pendingBalance).toLocaleString('en-IN')} ›</div>
         </div>
         <div class="tc-route">${t.route}</div>
         <div class="tc-meta">
-          <span>📅 ${t.tripDate} • ${t.totalKm} KM (${t.mileage} km/l)</span>
-          <span>Freight: ₹${t.totalAmount}</span>
+          <span>📅 ${t.tripDate} • ${t.totalKm} KM${Number(t.mileage)>0 ? ` (${t.mileage} km/l)` : ''}</span>
+          <span>Rent: ₹${t.totalAmount}${commBadge}</span>
         </div>
         <div class="tc-bottom">
           <div class="status-dot"><span class="dot ${dotClass}"></span> ${statusText}</div>
           <div class="lrn-tag">#${t.lrNumber || 'LRN-' + (101 + t.origIdx)}</div>
         </div>
         <div class="tc-actions">
-          <button class="mini-btn" style="background:#dcfce7;color:#15803d" onclickonclick="openSingleInvoice(${t.origIdx})">🧾 Invoice</button>
+          <button class="mini-btn" style="background:#dcfce7;color:#15803d" onclick="openSingleInvoice(${t.origIdx})">🧾 PDF</button>
+          <button class="mini-btn" style="background:#e0f2fe;color:#0369a1" onclick="openContactAction(${t.origIdx}, 'wa')">📲 WA</button>
+          <button class="mini-btn" style="background:#eff6ff;color:#1d4ed8" onclick="openContactAction(${t.origIdx}, 'call')">📞 Call</button>
           ${isDue ? `<button class="mini-btn" style="background:#15803d;color:#fff" onclick="markPaid(${t.origIdx})">✅ Settle</button>` : ''}
-          <a class="mini-btn" style="background:#eff6ff;color:#1d4ed8" href="tel:${t.customerPhone}">📞 Call</a>
           <button class="mini-btn" style="background:#f1f5f9;color:#334155" onclick="editTrip(${t.origIdx})">✏️</button>
           <button class="mini-btn" style="background:#fee2e2;color:#dc2626" onclick="deleteTrip(${t.origIdx})">🗑️</button>
         </div>
@@ -859,6 +1186,246 @@ function renderTripsList() {
   });
 }
 
+function formatWaPhone(raw) {
+  const digits = (raw || '').replace(/\D/g, '');
+  if (!digits) return '';
+  return digits.length === 10 ? '91' + digits : digits;
+}
+
+function buildTripWaMessage(t) {
+  const isDue = Number(t.pendingBalance) > 0;
+  const header = isDue ? '*PAYMENT REMINDER / TRIP RECEIPT*' : '*TRIP RECEIPT - SETTLED*';
+  return encodeURIComponent(
+    `*${(profile.companyName || 'TAMIL DHESAM TRANSPORT').toUpperCase()}*\n` +
+    `${header}\n` +
+    `━━━━━━━━━━━━━━━\n` +
+    `LR No: ${t.lrNumber || '-'}\n` +
+    `Date: ${t.tripDate}\n` +
+    `Vehicle: ${t.vehicleNumber}\n` +
+    `Party: ${t.customerName}\n` +
+    `Route: ${t.route}\n` +
+    `Net Freight: ₹${Number(t.netReceivable ?? t.totalAmount).toLocaleString('en-IN')}\n` +
+    `Received: ₹${Number(t.receivedAmount).toLocaleString('en-IN')}\n` +
+    `*Balance Due: ₹${Number(t.pendingBalance).toLocaleString('en-IN')}*\n` +
+    `━━━━━━━━━━━━━━━\n` +
+    `Contact: ${profile.phone || '+91 7401334842'}`
+  );
+}
+
+function openContactAction(index, type) {
+  const t = trips[index];
+  const contacts = [];
+  if (t.customerPhone) contacts.push({ role: '1. Customer / Party', name: t.customerName, phone: t.customerPhone });
+  if (t.transportPhone) contacts.push({ role: '2. Transport / Broker', name: t.brokerName || 'Transport', phone: t.transportPhone });
+
+  if (contacts.length === 0) {
+    return alert('இந்த ட்ரிப்பில் Customer அல்லது Transport மொபைல் நம்பர் என்ட்ரி செய்யப்படவில்லை.');
+  }
+
+  if (contacts.length === 1) {
+    executeContactAction(contacts[0].phone, type, t);
+    return;
+  }
+
+  document.getElementById('contactModalTitle').innerText = type === 'wa' ? '📲 Select Number for WhatsApp' : '📞 Select Number to Call';
+  const body = document.getElementById('contactModalBody');
+  body.innerHTML = `<p style="font-size:12px;color:var(--muted);margin-top:0">யாருக்கு ${type === 'wa' ? 'WhatsApp மெசேஜ் அனுப்ப' : 'Call செய்ய'} வேண்டும்?</p>`;
+  contacts.forEach(c => {
+    const btn = document.createElement('button');
+    btn.className = 'btn ' + (type === 'wa' ? 'btn-green' : 'btn-blue');
+    btn.style.width = '100%';
+    btn.style.marginBottom = '10px';
+    btn.style.textAlign = 'left';
+    btn.innerHTML = `<div style="font-size:11px;opacity:0.9">${c.role}</div><div style="font-size:15px">${c.name} — ${c.phone}</div>`;
+    btn.onclick = () => {
+      closeContactModal();
+      executeContactAction(c.phone, type, t);
+    };
+    body.appendChild(btn);
+  });
+  document.getElementById('contactModal').classList.remove('hidden');
+}
+
+function executeContactAction(phone, type, t) {
+  if (type === 'call') {
+    window.location.href = `tel:${phone}`;
+  } else {
+    const waNum = formatWaPhone(phone);
+    window.open(`https://wa.me/${waNum}?text=${buildTripWaMessage(t)}`, '_blank');
+  }
+}
+
+function closeContactModal() {
+  document.getElementById('contactModal').classList.add('hidden');
+}
+// ==================== DRIVER SALARY & ADVANCE LEDGER ====================
+function initDriverLedger() {
+  const sel = document.getElementById('driverLedgerSelect');
+  const names = [...new Set([
+    ...trips.map(t => t.driverName),
+    ...driverPayments.map(p => p.driverName)
+  ].filter(Boolean))];
+
+  sel.innerHTML = '<option value="all">All Drivers (மொத்த டிரைவர்கள்)</option>';
+  names.forEach(n => {
+    sel.innerHTML += `<option value="${n}">${n}</option>`;
+  });
+  if (names.length === 1) sel.value = names[0];
+  renderDriverLedger();
+}
+
+function addDriverDirectPayment() {
+  const date = document.getElementById('drvPayDate').value;
+  const driverName = document.getElementById('drvPayName').value.trim();
+  const amount = parseFloat(document.getElementById('drvPayAmt').value) || 0;
+  const note = document.getElementById('drvPayNote').value.trim() || 'Salary / Advance Paid';
+
+  if (!driverName || amount <= 0) return alert('டிரைவர் பெயர் மற்றும் தொகையை (Amount) சரியாகப் போடவும்.');
+
+  driverPayments.unshift({ id: Date.now(), date, driverName, amount, note });
+  saveData();
+  document.getElementById('drvPayAmt').value = '';
+  document.getElementById('drvPayNote').value = '';
+  initDriverLedger();
+  document.getElementById('driverLedgerSelect').value = driverName;
+  renderDriverLedger();
+}
+
+function deleteDriverPayment(id) {
+  if (confirm('இந்த பேமெண்ட் என்ட்ரியை நீக்கவா?')) {
+    driverPayments = driverPayments.filter(p => p.id !== id);
+    saveData();
+    renderDriverLedger();
+  }
+}
+
+function renderDriverLedger() {
+  const selected = document.getElementById('driverLedgerSelect').value;
+  if (selected !== 'all') document.getElementById('drvPayName').value = selected;
+
+  const drvTrips = trips.filter(t => selected === 'all' || t.driverName === selected);
+  const drvExtras = driverPayments.filter(p => selected === 'all' || p.driverName === selected);
+
+  let totalSalary = 0;
+  let tripAdvances = 0;
+  drvTrips.forEach(t => {
+    totalSalary += Number(t.driverBatta || 0);
+    tripAdvances += Number(t.driverAdvance || 0);
+  });
+
+  let extraPaid = 0;
+  drvExtras.forEach(p => { extraPaid += Number(p.amount || 0); });
+
+  const totalPaid = tripAdvances + extraPaid;
+  const pendingSal = totalSalary - totalPaid;
+
+  document.getElementById('drvBannerTitle').innerText = selected === 'all' ? 'All Drivers Account' : `👨‍✈️ ${selected} - Salary Account`;
+  document.getElementById('drvTripCount').innerText = `${drvTrips.length} Trips`;
+  document.getElementById('drvTotSal').innerText = '₹' + totalSalary.toLocaleString('en-IN');
+  document.getElementById('drvTotPaid').innerText = '₹' + totalPaid.toLocaleString('en-IN');
+  document.getElementById('drvTotDue').innerText = '₹' + pendingSal.toLocaleString('en-IN');
+
+  const list = document.getElementById('driverLedgerList');
+  list.innerHTML = '';
+
+  drvExtras.forEach(p => {
+    list.innerHTML += `
+      <div class="trip-card" style="border-left:4px solid var(--green)">
+        <div class="tc-top">
+          <div><div class="tc-party">💵 Direct Payment — ${p.driverName}</div><div style="font-size:12px;color:var(--muted)">${p.date} • ${p.note}</div></div>
+          <div style="text-align:right">
+            <strong style="color:var(--green)">+ ₹${Number(p.amount).toLocaleString('en-IN')} Paid</strong><br>
+            <button style="background:none;border:none;color:var(--red);font-size:11px;cursor:pointer" onclick="deleteDriverPayment(${p.id})">🗑️ Delete</button>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+
+  drvTrips.forEach(t => {
+    const sal = Number(t.driverBatta || 0);
+    const adv = Number(t.driverAdvance || 0);
+    const bal = sal - adv;
+    list.innerHTML += `
+      <div class="trip-card">
+        <div class="tc-top">
+          <div>
+            <div class="tc-party">${t.route} (${t.tripDate})</div>
+            <div class="tc-veh">👨‍✈️ ${t.driverName} • Rent: ₹${t.totalAmount}</div>
+          </div>
+          <div class="tc-amt-pill ${bal > 0 ? 'due' : ''}">Bal: ₹${bal.toLocaleString('en-IN')}</div>
+        </div>
+        <div class="tc-meta" style="border:none;padding:6px 0 0">
+          <span>16% Salary: <strong>₹${sal.toLocaleString('en-IN')}</strong></span>
+          <span style="color:var(--green)">Trip Advance: <strong>₹${adv.toLocaleString('en-IN')}</strong></span>
+        </div>
+      </div>
+    `;
+  });
+
+  if (drvTrips.length === 0 && drvExtras.length === 0) {
+    list.innerHTML = '<div class="card" style="text-align:center;color:var(--muted)">No driver records found.</div>';
+  }
+}
+
+// ==================== COMMISSION LEDGER ====================
+function initCommissionLedger() {
+  const sel = document.getElementById('commBrokerSelect');
+  const brokers = [...new Set(trips.map(t => t.brokerName).filter(Boolean))];
+  sel.innerHTML = '<option value="all">All Transports / Brokers</option>';
+  brokers.forEach(b => {
+    sel.innerHTML += `<option value="${b}">${b}</option>`;
+  });
+  renderCommissionLedger();
+}
+
+function renderCommissionLedger() {
+  const selected = document.getElementById('commBrokerSelect').value;
+  const listData = trips.filter(t => {
+    const hasComm = Number(t.commissionAmount || 0) > 0 || (t.brokerName && t.brokerName.trim() !== '');
+    if (!hasComm) return false;
+    if (selected !== 'all' && t.brokerName !== selected) return false;
+    return true;
+  });
+
+  let gross = 0, comm = 0, net = 0;
+  const cont = document.getElementById('commissionListContainer');
+  cont.innerHTML = '';
+
+  listData.forEach(t => {
+    const g = Number(t.totalAmount || 0);
+    const c = Number(t.commissionAmount || 0);
+    const n = g - c;
+    gross += g; comm += c; net += n;
+
+    cont.innerHTML += `
+      <div class="trip-card">
+        <div class="tc-top">
+          <div>
+            <div class="tc-party">🤝 ${t.brokerName || 'Direct / Unnamed Broker'}</div>
+            <div class="tc-veh">${t.route} (${t.tripDate})</div>
+          </div>
+          <div class="tc-amt-pill due">Comm: ₹${c.toLocaleString('en-IN')}</div>
+        </div>
+        <div class="tc-meta" style="border:none;padding:6px 0 0">
+          <span>Party: ${t.customerName}</span>
+          <span>Gross: ₹${g.toLocaleString('en-IN')} → Net: <strong>₹${n.toLocaleString('en-IN')}</strong></span>
+        </div>
+      </div>
+    `;
+  });
+
+  document.getElementById('commTripCount').innerText = `${listData.length} Trips`;
+  document.getElementById('commGross').innerText = '₹' + gross.toLocaleString('en-IN');
+  document.getElementById('commTotal').innerText = '₹' + comm.toLocaleString('en-IN');
+  document.getElementById('commNet').innerText = '₹' + net.toLocaleString('en-IN');
+
+  if (listData.length === 0) {
+    cont.innerHTML = '<div class="card" style="text-align:center;color:var(--muted)">No commission trips recorded yet.</div>';
+  }
+}
+
+// ==================== DIRECTORY (PARTY KHATA) ====================
 function renderDirectory() {
   const q = (document.getElementById('partySearch').value || '').toLowerCase();
   const partyMap = {};
@@ -866,7 +1433,7 @@ function renderDirectory() {
 
   trips.forEach(t => {
     const name = t.customerName || 'Unknown';
-    if (!partyMap[name]) partyMap[name] = { name, count: 0, due: 0, phone: t.customerPhone };
+    if (!partyMap[name]) partyMap[name] = { name, count: 0, due: 0, phone: t.customerPhone || t.transportPhone };
     partyMap[name].count++;
     partyMap[name].due += Number(t.pendingBalance || 0);
     grandDue += Number(t.pendingBalance || 0);
@@ -903,13 +1470,15 @@ function openPartyTrips(partyName) {
   generateReport();
 }
 
+// ==================== REPORTS ====================
 function populateFilterValues() {
   const cat = document.getElementById('filterCategory').value;
   const valSelect = document.getElementById('filterValue');
   valSelect.innerHTML = '<option value="all">All</option>';
 
   if (cat !== 'all') {
-    const key = cat === 'vehicle' ? 'vehicleNumber' : (cat === 'driver' ? 'driverName' : 'customerName');
+    const keyMap = { vehicle: 'vehicleNumber', driver: 'driverName', customer: 'customerName', broker: 'brokerName' };
+    const key = keyMap[cat];
     const unique = [...new Set(trips.map(t => t[key]).filter(Boolean))];
     unique.forEach(u => {
       valSelect.innerHTML += `<option value="${u}">${u}</option>`;
@@ -932,14 +1501,14 @@ function generateReport() {
 
   currentReportTrips = trips.filter(t => {
     if (cat !== 'all' && val !== 'all') {
-      const key = cat === 'vehicle' ? 'vehicleNumber' : (cat === 'driver' ? 'driverName' : 'customerName');
-      if (t[key] !== val) return false;
+      const keyMap = { vehicle: 'vehicleNumber', driver: 'driverName', customer: 'customerName', broker: 'brokerName' };
+      if (t[keyMap[cat]] !== val) return false;
     }
     const d = new Date(t.tripDate);
     if (range === '1m') {
       if (d.getMonth() !== now.getMonth() || d.getFullYear() !== now.getFullYear()) return false;
     } else if (range === '2m') {
-      const twoM = new Date(); 
+      const twoM = new Date();
       twoM.setMonth(now.getMonth() - 2);
       if (d < twoM) return false;
     } else if (range === 'custom') {
@@ -955,19 +1524,20 @@ function generateReport() {
   const cont = document.getElementById('reportTripsContainer');
   cont.innerHTML = '';
 
-  currentReportTrips.forEach((t, idx) => {
-    tot += Number(t.totalAmount || 0);
+  currentReportTrips.forEach(t => {
+    const netRent = Number(t.totalAmount || 0) - Number(t.commissionAmount || 0);
+    tot += netRent;
     rec += Number(t.receivedAmount || 0);
     pen += Number(t.pendingBalance || 0);
     km += Number(t.totalKm || 0);
-    exp += Number(t.dieselCost || 0) + Number(t.driverBatta || 0) + Number(t.tollExpense || 0);
+    exp += Number(t.dieselCost || 0) + Number(t.driverBatta || 0) + Number(t.tollExpense || 0) + Number(t.permitRtoExpense || 0);
     prof += Number(t.netProfit || 0);
 
     cont.innerHTML += `
       <div class="trip-card">
         <div class="tc-top">
           <div><strong>${t.customerName}</strong> • <span style="color:var(--blue)">${t.vehicleNumber}</span></div>
-          <strong>₹${t.totalAmount}</strong>
+          <strong>Net: ₹${netRent}</strong>
         </div>
         <div class="tc-route" style="font-size:12.5px">${t.route} (${t.tripDate})</div>
         <div class="tc-meta" style="border:none;padding:0">
@@ -988,23 +1558,30 @@ function generateReport() {
   document.getElementById('repProfit').innerText = '₹' + prof.toLocaleString('en-IN');
 }
 
+// ==================== PDF INVOICE WITH WATERMARK, OPTIONAL ADDRESS & GST ====================
 function openSingleInvoice(index) {
-  renderInvoiceModal([trips[index]], trips[index].customerName, trips[index].customerPhone);
+  renderInvoiceModal([trips[index]]);
 }
 
 function openCombinedInvoice() {
   if (currentReportTrips.length === 0) return alert('No trips in this report to generate invoice.');
-  const party = currentReportTrips[0].customerName;
-  const phone = currentReportTrips[0].customerPhone;
-  renderInvoiceModal(currentReportTrips, party, phone);
+  renderInvoiceModal(currentReportTrips);
 }
 
-function renderInvoiceModal(list, partyName, phone) {
+function renderInvoiceModal(list) {
+  const first = list[0];
+  const partyName = first.customerName;
+  const custPhone = first.customerPhone;
+  const transPhone = first.transportPhone;
+  const custAddr = first.customerAddress;
+  const custGst = first.customerGst;
+
   let freightSum = 0, advSum = 0, balSum = 0;
   let rowsHtml = '';
 
-    list.forEach((t, i) => {
-    freightSum += Number(t.totalAmount || 0);
+  list.forEach((t, i) => {
+    const billableRent = Number(t.totalAmount || 0) - Number(t.commissionAmount || 0);
+    freightSum += billableRent;
     advSum += Number(t.receivedAmount || 0);
     balSum += Number(t.pendingBalance || 0);
     rowsHtml += `
@@ -1014,80 +1591,110 @@ function renderInvoiceModal(list, partyName, phone) {
         <td>${t.tripDate}</td>
         <td>${t.vehicleNumber}</td>
         <td>${t.route}</td>
-        <td>₹${Number(t.totalAmount).toLocaleString('en-IN')}</td>
+        <td>₹${billableRent.toLocaleString('en-IN')}</td>
         <td>₹${Number(t.receivedAmount).toLocaleString('en-IN')}</td>
         <td><strong>₹${Number(t.pendingBalance).toLocaleString('en-IN')}</strong></td>
       </tr>
     `;
   });
 
-  const invNo = 'TDT-' + String(Math.floor(100 + Math.random() * 900));
+  const invNo = 'INV-' + String(Math.floor(100 + Math.random() * 900));
   const today = new Date().toISOString().split('T')[0];
 
+  const watermarkHtml = profile.logo
+    ? `<div class="inv-watermark"><img src="${profile.logo}" alt="Watermark"></div>`
+    : `<div class="inv-watermark"><div class="inv-watermark-text">${profile.companyName || 'TAMIL DHESAM TRANSPORT'}</div></div>`;
+
+  const brandLogoHtml = profile.logo
+    ? `<img src="${profile.logo}" class="inv-logo-img" alt="Logo">`
+    : '';
+
+  const phoneLine = [custPhone ? `Customer Ph: ${custPhone}` : '', transPhone ? `Transport Ph: ${transPhone}` : ''].filter(Boolean).join(' • ');
+
   document.getElementById('invoicePaper').innerHTML = `
-    <div class="inv-head">
-      <div class="inv-brand">
-        <h2>Tamil Dhesam Transport</h2>
-        <p>Melapudi Village, Pallipet Taluk, Thiruvallur Dist.<br>Tamil Nadu - 631207 • Ph: +91 7401334842</p>
+    ${watermarkHtml}
+    <div class="inv-content">
+      <div class="inv-head">
+        <div class="inv-brand-wrap">
+          ${brandLogoHtml}
+          <div class="inv-brand">
+            <h2>${profile.companyName || 'Tamil Dhesam Transport'}</h2>
+            <p>${(profile.address || '').replace(/\n/g, '<br>')}<br>Ph: ${profile.phone || '+91 7401334842'}${profile.gst ? ` • GSTIN: <strong>${profile.gst}</strong>` : ''}</p>
+          </div>
+        </div>
+        <div class="inv-tag">
+          <h3>${custGst || profile.gst ? 'Tax Invoice' : 'Freight Invoice'}</h3>
+          <p>Invoice No: <strong>${invNo}</strong><br>Date: ${today}</p>
+        </div>
       </div>
-      <div class="inv-tag">
-        <h3>Tax Invoice</h3>
-        <p>Invoice No: <strong>${invNo}</strong><br>Date: ${today}</p>
-      </div>
-    </div>
 
-    <div class="inv-billto">
-      <div>
-        <span style="font-size:10px;color:#64748b;font-weight:700">BILL TO</span><br>
-        <strong style="font-size:14px">${partyName}</strong><br>
-        <span>Phone: ${phone || '-'}</span>
+      <div class="inv-billto">
+        <div>
+          <span style="font-size:10px;color:#64748b;font-weight:700">BILL TO</span><br>
+          <strong style="font-size:14px">${partyName}</strong><br>
+          ${custAddr ? `<span>${custAddr}</span><br>` : ''}
+          ${phoneLine ? `<span>${phoneLine}</span><br>` : ''}
+          ${custGst ? `<span>GSTIN: <strong>${custGst}</strong></span>` : ''}
+        </div>
+        <div style="text-align:right">
+          <span style="font-size:10px;color:#64748b;font-weight:700">TOTAL TRIPS</span><br>
+          <strong style="font-size:15px">${list.length}</strong>
+        </div>
       </div>
-      <div style="text-align:right">
-        <span style="font-size:10px;color:#64748b;font-weight:700">TOTAL TRIPS</span><br>
-        <strong style="font-size:15px">${list.length}</strong>
-      </div>
-    </div>
 
-    <h4 style="margin:0 0 6px;color:var(--green)">Annexure - Trip Details</h4>
-    <table class="inv-table">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>LR No</th>
-          <th>Date</th>
-          <th>Truck No</th>
-          <th>Route</th>
-          <th>Freight</th>
-          <th>Received</th>
-          <th>Balance</th>
-        </tr>
-      </thead>
-      <tbody>${rowsHtml}</tbody>
-    </table>
+      <h4 style="margin:0 0 6px;color:var(--green)">Annexure - Trip Details</h4>
+      <table class="inv-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>LR No</th>
+            <th>Date</th>
+            <th>Truck No</th>
+            <th>Route</th>
+            <th>Freight</th>
+            <th>Received</th>
+            <th>Balance</th>
+          </tr>
+        </thead>
+        <tbody>${rowsHtml}</tbody>
+      </table>
 
-    <div class="inv-totals">
-      <div class="inv-words">
-        <strong>Terms & Conditions:</strong><br>
-        1. Goods carried at owner's risk.<br>
-        2. Please clear pending freight balance on delivery.
+      <div class="inv-totals">
+        <div class="inv-words">
+          <strong>Terms & Conditions:</strong><br>
+          1. Goods carried at owner's risk.<br>
+          2. Please clear pending freight balance on delivery.
+        </div>
+        <div class="inv-sum-box">
+          <div class="inv-sum-row green"><span>Total Freight</span><span>₹${freightSum.toLocaleString('en-IN')}</span></div>
+          <div class="inv-sum-row"><span>Received</span><span>₹${advSum.toLocaleString('en-IN')}</span></div>
+          <div class="inv-sum-row" style="font-weight:800;color:var(--red)"><span>Balance Due</span><span>₹${balSum.toLocaleString('en-IN')}</span></div>
+        </div>
       </div>
-      <div class="inv-sum-box">
-        <div class="inv-sum-row green"><span>Total Freight</span><span>₹${freightSum.toLocaleString('en-IN')}</span></div>
-        <div class="inv-sum-row"><span>Received</span><span>₹${advSum.toLocaleString('en-IN')}</span></div>
-        <div class="inv-sum-row" style="font-weight:800;color:var(--red)"><span>Balance Due</span><span>₹${balSum.toLocaleString('en-IN')}</span></div>
-      </div>
-    </div>
 
-    <div class="inv-footer">
-      <span>Generated by Tamil Dhesam Transport App</span>
-      <strong style="color:var(--navy)">For Tamil Dhesam Transport</strong>
+      <div class="inv-footer">
+        <span>Generated by ${profile.companyName || 'Tamil Dhesam Transport'} App</span>
+        <strong style="color:var(--navy)">For ${profile.companyName || 'Tamil Dhesam Transport'}</strong>
+      </div>
     </div>
   `;
 
   const waText = encodeURIComponent(
-    `*TAMIL DHESAM TRANSPORT*\nInvoice: ${invNo}\nParty: ${partyName}\nTrips: ${list.length}\nTotal Freight: ₹${freightSum}\nReceived: ₹${advSum}\n*Balance Due: ₹${balSum}*\nThank you for your business!`
+    `*${(profile.companyName || 'TAMIL DHESAM TRANSPORT').toUpperCase()}*\nInvoice: ${invNo}\nParty: ${partyName}\nTrips: ${list.length}\nTotal Freight: ₹${freightSum}\nReceived: ₹${advSum}\n*Balance Due: ₹${balSum}*\nThank you for your business!`
   );
-  document.getElementById('invWaBtn').onclick = () => window.open(`https://wa.me/91${(phone||'').replace(/\D/g,'')}?text=${waText}`, '_blank');
+
+  const actionsDiv = document.getElementById('invoiceModalActions');
+  actionsDiv.innerHTML = `<button class="btn btn-blue" onclick="window.print()">🖨️ Save PDF / Print</button>`;
+
+  if (custPhone) {
+    actionsDiv.innerHTML += `<button class="btn btn-green" onclick="window.open('https://wa.me/${formatWaPhone(custPhone)}?text=${waText}', '_blank')">📲 WA Customer</button>`;
+  }
+  if (transPhone) {
+    actionsDiv.innerHTML += `<button class="btn btn-navy" onclick="window.open('https://wa.me/${formatWaPhone(transPhone)}?text=${waText}', '_blank')">📲 WA Transport</button>`;
+  }
+  if (!custPhone && !transPhone) {
+    actionsDiv.innerHTML += `<button class="btn btn-green" onclick="window.open('https://wa.me/?text=${waText}', '_blank')">📲 Share WA</button>`;
+  }
 
   document.getElementById('invoiceModal').classList.remove('hidden');
 }
@@ -1096,6 +1703,7 @@ function closeInvoice() {
   document.getElementById('invoiceModal').classList.add('hidden');
 }
 
+// ==================== TOOLS & BACKUP ====================
 function toggleToolBox(id) {
   document.getElementById('calcTool').classList.add('hidden');
   document.getElementById('docTool').classList.add('hidden');
@@ -1111,10 +1719,12 @@ function runQuickCalc() {
 
   const liters = km / mil;
   const dCost = Math.round(liters * rate);
-  const totCost = dCost + misc;
+  const drvSal = Math.round(quote * 0.16);
+  const totCost = dCost + drvSal + misc;
   const prof = quote - totCost;
 
   document.getElementById('tcResLiters').innerText = `${liters.toFixed(1)} L (₹${dCost})`;
+  document.getElementById('tcResDrv').innerText = `₹${drvSal.toLocaleString('en-IN')}`;
   document.getElementById('tcResCost').innerText = `₹${totCost.toLocaleString('en-IN')}`;
   document.getElementById('tcResProfit').innerText = `₹${prof.toLocaleString('en-IN')}`;
 }
@@ -1127,7 +1737,7 @@ function saveDocs() {
     puc: document.getElementById('docPUC').value
   };
   localStorage.setItem('td_truck_docs', JSON.stringify(docs));
-    document.getElementById('docSavedMsg').innerText = 'Saved on ' + new Date().toLocaleTimeString();
+  document.getElementById('docSavedMsg').innerText = 'Saved on ' + new Date().toLocaleTimeString();
 }
 
 function loadDocs() {
@@ -1141,7 +1751,12 @@ function loadDocs() {
 
 function shareBusinessCard() {
   const msg = encodeURIComponent(
-    `*TAMIL DHESAM TRANSPORT*\nProprietor: Munish\nVehicle: Tata Intra V30 Closed Container (TN 13 Z 1647)\nService: All India Interstate Parcel & Full Load Service (TN, KL, KA, MH, GJ, TS, AP)\nContact / WhatsApp: +91 7401334842\nMelapudi, Pallipet, Thiruvallur Dist.`
+    `*${(profile.companyName || 'TAMIL DHESAM TRANSPORT').toUpperCase()}*\n` +
+    `Proprietor: ${profile.defaultDriver || 'Munish'}\n` +
+    `Vehicle: ${profile.defaultVehicle || 'TN 13 Z 1647'}\n` +
+    `Service: All India Interstate Parcel & Full Load Service (TN, KL, KA, MH, GJ, TS, AP)\n` +
+    `Contact / WhatsApp: ${profile.phone || '+91 7401334842'}\n` +
+    `${profile.address || 'Melapudi, Pallipet, Thiruvallur Dist.'}`
   );
   window.open(`https://wa.me/?text=${msg}`, '_blank');
 }
@@ -1157,13 +1772,15 @@ function updateDatalists() {
   fill('vehicleList', 'vehicleNumber');
   fill('driverList', 'driverName');
   fill('customerList', 'customerName');
+  fill('brokerList', 'brokerName');
 }
 
 function downloadBackup() {
-  const blob = new Blob([JSON.stringify(trips, null, 2)], { type: 'application/json' });
+  const fullBackup = { trips, driverPayments, profile };
+  const blob = new Blob([JSON.stringify(fullBackup, null, 2)], { type: 'application/json' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = `TamilDhesam_Backup_${new Date().toISOString().split('T')[0]}.json`;
+  a.download = `TamilDhesam_FullBackup_${new Date().toISOString().split('T')[0]}.json`;
   a.click();
 }
 
@@ -1176,9 +1793,17 @@ function restoreBackup(event) {
       const data = JSON.parse(e.target.result);
       if (Array.isArray(data)) {
         trips = data;
-        saveData();
-        alert('Backup successfully restored!');
+      } else if (data && Array.isArray(data.trips)) {
+        trips = data.trips;
+        if (Array.isArray(data.driverPayments)) driverPayments = data.driverPayments;
+        if (data.profile) {
+          profile = { ...profile, ...data.profile };
+          localStorage.setItem('td_transport_profile_v1', JSON.stringify(profile));
+          applyProfileUI();
+        }
       }
+      saveData();
+      alert('Backup successfully restored!');
     } catch (err) {
       alert('Invalid backup file.');
     }
@@ -1192,11 +1817,14 @@ function downloadFilteredExcel() {
 
 function exportCSV(dataList, filename) {
   if (!dataList || dataList.length === 0) return alert('No data to export.');
-  const headers = ['LR No','Date','Vehicle','Driver','Customer','Phone','Route','Total KM','Diesel L','Mileage','Diesel Cost','Driver Batta','Toll','Freight','Received','Balance','Net Profit','Status'];
+  const headers = ['LR No','Date','Vehicle','Driver','Customer','Cust Phone','Broker','Trans Phone','Route','Total KM','Diesel L','Mileage','Diesel Cost','Driver Salary (16%)','Driver Advance','Toll','Permit & RTO','Gross Rent','Commission','Net Rent','Received','Balance','Net Profit','Status'];
   const rows = dataList.map(t => [
-    t.lrNumber||'', t.tripDate, t.vehicleNumber, t.driverName, t.customerName, t.customerPhone,
-    `"${t.route}"`, t.totalKm, t.dieselLiters, t.mileage, t.dieselCost, t.driverBatta, t.tollExpense,
-    t.totalAmount, t.receivedAmount, t.pendingBalance, t.netProfit, t.courierStatus
+    t.lrNumber||'', t.tripDate, t.vehicleNumber, t.driverName,
+    `"${t.customerName||''}"`, t.customerPhone||'', `"${t.brokerName||''}"`, t.transportPhone||'',
+    `"${t.route}"`, t.totalKm, t.dieselLiters, t.mileage, t.dieselCost,
+    t.driverBatta, t.driverAdvance||0, t.tollExpense, t.permitRtoExpense||0,
+    t.totalAmount, t.commissionAmount||0, (t.totalAmount - (t.commissionAmount||0)),
+    t.receivedAmount, t.pendingBalance, t.netProfit, t.courierStatus
   ]);
   const csv = [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
   const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
@@ -1211,5 +1839,3 @@ updateDatalists();
 </script>
 </body>
 </html>
-
-
